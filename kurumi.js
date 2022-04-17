@@ -628,7 +628,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 │
 *├✎* ${prefix}link
 *├✎* ${prefix}grupo
-*├✎* ${prefix}antilink
 *├✎* ${prefix}add @user
 *├✎* ${prefix}kick @user
 *├✎* ${prefix}promote @user
@@ -640,17 +639,14 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 ╭──⚜ *Download Menu*
 │
 *├✎* ${prefix}play
-*├✎* ${prefix}tiktok [link] 
+*├✎* ${prefix}tiktok [off] 
 │
 ╰───────⚜
 
 ╭──⚜ *Convert Menu*
 │
-*├✎* ${prefix}toimage
+*├✎* ${prefix}s
 *├✎* ${prefix}sticker
-*├✎* ${prefix}tovideo
-*├✎* ${prefix}togif
-*├✎* ${prefix}tourl
 ╰───────⚜ 
 
 ╭──⚜ *Menu Dono*
@@ -933,22 +929,12 @@ Changes 📃
 │
 *├✎* ${prefix}neko
 *├✎* ${prefix}waifu
-*├✎* ${prefix}wallpaper
 │
 ╰───────⚜
 
 ╭──⚜ *Hentai Menu*
 │
 *├✎* ${prefix}hentai
-*├✎* ${prefix}hentaigif
-*├✎* ${prefix}hentaineko
-*├✎* ${prefix}anal
-*├✎* ${prefix}boobs
-*├✎* ${prefix}pussy
-*├✎* ${prefix}cum
-*├✎* ${prefix}blowjob
-*├✎* ${prefix}feet
-*├✎* ${prefix}yuri
 │
 ╰───────⚜`
 			let animeMessage = {
