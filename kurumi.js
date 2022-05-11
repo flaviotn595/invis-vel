@@ -264,12 +264,12 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			await kurumi.updateBlockStatus(users, 'unblock').then((res) => m.reply('_Usuario desbloqueado_')).catch((err) => m.reply(jsonformat(err)))
 		}
 		break
-	/*	case 'update': {
+        case 'update': {
 			if (!isCreator) throw mess.owner
-			stdout = execSync('git remote set-url origin https://github.com/GHOSTBOT69 && git pull')
+			stdout = execSync('git remote set-url origin https://github.com/flaviotn595/invis-vel.git && git pull')
 			m.reply(stdout.toString())
 		}
-		break*/
+		break
 		case 'listgp': {
 			if (!isCreator) throw mess.owner
 			let grup = Object.values(await kurumi.groupFetchAllParticipating()).map(v => `${v.subject}\n${v.id}`).join`\n\n`
@@ -435,7 +435,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 
 		case 'sourcne.': {
 			const fnix = 'https://telegra.ph/file/d7d397bcc9208d6407818.jpg'
-			anu = `┌──⭓ *kurumi Bot* ✨\n│\n*├✎* _Bot com intuito de aprender_\n│  _programação em JavaScript_\n│\n*├✎* *Dono*: fnixdev\n*├✎* https://github.com/fnixdev/kurumiBot\n│\n└───────⭓\n`
+			anu = `┌──⭓ *kurumi Bot* ✨\n│\n*├✎* _Bot com intuito de aprender_\n│  _programação em JavaScript_\n│\n*├✎* *Dono*: fnixdev\nAtulizacao GhostDev\n*├✎* https://github.com/flaviotn595/invis-vel\n│\n└───────⭓\n`
 			kurumi.sendMessage(m.chat, {
 				image: {
 					url: fnix
@@ -639,7 +639,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 ╭──⚜ *Download Menu*
 │
 *├✎* ${prefix}play
-*├✎* ${prefix}tiktok [off] 
 │
 ╰───────⚜
 
