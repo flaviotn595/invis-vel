@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://c.tenor.com/Fk5_A6FYc5AAAAAC/date-a-live-kurumi-tokisaki.gif" width="498" height="278"/>
+  <img src="https://c.tenor.com/Fk5_A6FYc5AAAAAC/date-a-live-kurumi-tokisaki.gif" width="780" height="278"/>
 </p>
 <h2 align="center">
   <b>Kurumi Bot ✨</b>
