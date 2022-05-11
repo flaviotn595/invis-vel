@@ -266,7 +266,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		break
         case 'update': {
 			if (!isCreator) throw mess.owner
-			stdout = execSync('git remote set-url origin https://github.com/flaviotn595/invis-vel && git pull')
+			stdout = execSync('git remote set-url origin https://github.com/flaviotn595/invis-vel.git && git pull')
 			m.reply(stdout.toString())
 		}
 		break
@@ -435,7 +435,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 
 		case 'sourcne.': {
 			const fnix = 'https://telegra.ph/file/d7d397bcc9208d6407818.jpg'
-			anu = `┌──⭓ *kurumi Bot* ✨\n│\n*├✎* _Bot com intuito de aprender_\n│  _programação em JavaScript_\n│\n*├✎* *Dono*: fnixdev\nAtulizacao GhostDev\n*├✎* https://github.com/flaviotn595/invis-vel\n│\n└───────⭓\n`
+			anu = `┌──⭓ *kurumi Bot*\n│\n*├✎* _Bot com intuito de aprender_\n│  _programação em JavaScript_\n│\n*├✎* *Dono*: fnixdev\nAtulizacao GhostDev\n*├✎* https://github.com/flaviotn595/invis-vel\n│\n└───────⭓\n`
 			kurumi.sendMessage(m.chat, {
 				image: {
 					url: fnix
