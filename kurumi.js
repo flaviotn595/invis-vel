@@ -266,7 +266,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		break
         case 'update': {
 			if (!isCreator) throw mess.owner
-			stdout = execSync('git remote set-url origin https://github.com/flaviotn595/invis-vel.git && git pull')
+			stdout = execSync('git remote set-url origin https://github.com/flaviotn595/invis-vel && git pull')
 			m.reply(stdout.toString())
 		}
 		break
