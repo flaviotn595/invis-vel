@@ -669,7 +669,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			})
 		}
 break
-		case 'sk2.1': {
+		case 'sk2': {
 			const min = 'https://telegra.ph/file/df0aca18c37be0bbea032.jpg'
 			anu = `SK-Experience v2.1 | Stock
 
