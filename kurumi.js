@@ -8,6 +8,8 @@
 
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
+const { Primbon } = require('scrape-primbon')
+const primbon = new Primbon()
 
 
 const fs = require('fs')
@@ -29,8 +31,6 @@ const os = require('os')
 const speed = require('performance-now')
 const moment = require("moment-timezone")
 const yts = require('yt-search')
-const { Primbon } = require('scrape-primbon')
-const primbon = new Primbon()
 
 // const afk = require("./lib/afk");
 
