@@ -196,17 +196,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 				}
 			}
 			break
-      case 'listgp': {
-				if (!isCreator) throw mess.owner
-        let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-        let teks = `⬣ *Lista de Grupos*\n\nTotal : ${anu.length} Group\n\n`
-        for (let i of anu) {
-          let metadata = await kurumi.groupMetadata(i)
-          teks += `⬡ *Nome :* ${metadata.subject}\n⬡ *Dono :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Criado :* ${moment(metadata.creation * 1000).tz('America/Sao_Paulo').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Membro :* ${metadata.participants.length}\n\n────────────────────────\n\n`
-                 }
-                 kurumi.sendTextWithMentions(m.chat, teks, m)
-    }
-    break
 		case 'join': {
 			if (!isCreator) throw mess.owner
 			if (!text) throw 'Insira o link do grupo!'
@@ -314,12 +303,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			m.reply(stdout.toString())
 		}
 		break
-		case 'listgp': {
-			if (!isCreator) throw mess.owner
-			let grup = Object.values(await kurumi.groupFetchAllParticipating()).map(v => `${v.subject}\n${v.id}`).join`\n\n`
-			m.reply('Lista de Grupos:\n\n' + grup)
-		}
-		break
 		case 'setprefix': {
 			if (!isCreator) throw mess.owner
 			if (!text) return m.reply('_Eu preciso que você informe um prefixo._')
@@ -375,16 +358,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
                  kurumi.sendTextWithMentions(m.chat, teks, m)
              }
              break
-                case 'listgp': {
-                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-                 let teks = `⬣ *LISTA GRUPO DE BATE-PAPO*\n\nTotal de Grupo : ${anu.length} Grupo\n\n`
-                 for (let i of anu) {
-                     let metadata = await kurumi.groupMetadata(i)
-                     teks += `⬡ *Nome :* ${metadata.subject}\n⬡ *Proprietário :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Criado :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Membro :* ${metadata.participants.length}\n\n────────────────────────\n\n`
-                 }
-                 kurumi.sendTextWithMentions(m.chat, teks, m)
-             }
-             break
+                
 		case 'promote': {
 			if (!m.isGroup) throw mess.group
 			if (!isGroupAdmins) throw mess.admin
@@ -393,6 +367,16 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply('_Usuario Promovido_')).catch((err) => m.reply(jsonformat(err)))
 		}
 		break
+		case 'listgp': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+                 let teks = `⬣ *LISTA GRUPO DE BATE-PAPO*\n\nTotal de Grupo : ${anu.length} Grupo\n\n`
+                 for (let i of anu) {
+                     let metadata = await kurumi.groupMetadata(i)
+                     teks += `⬡ *Nome :* ${metadata.subject}\n⬡ *Proprietário :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Não conhecido'}\n⬡ *ID :* ${metadata.id}\n⬡ *Criado :* ${moment(metadata.creation * 1000).tz('merica/Sao_Paulo').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Membro :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                 }
+                 kurumi.sendTextWithMentions(m.chat, teks, m)
+             }
+             break
 		case 'demote': {
 			if (!m.isGroup) throw mess.group
 			if (!isGroupAdmins) throw mess.admin
