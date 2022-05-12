@@ -241,7 +241,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		let { pinterest } = require('./lib/scraper')
                 anu = await pinterest(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
-                hisoka.sendMessage(m.chat, { image: { url: result }, caption: 'aqui esta' }, { quoted: m })
+                kurumi.sendMessage(m.chat, { image: { url: result }, caption: 'aqui esta' }, { quoted: m })
             }
             break
 				
