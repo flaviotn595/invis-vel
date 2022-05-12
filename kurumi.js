@@ -365,6 +365,26 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
+	 case 'listpv': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+                 let teks = `⬣ *LISTA DE BATE-PAPO PESSOAL*\n\nTotal Chat : ${anu.length} Chat\n\n`
+                 for (let i of anu) {
+                     let nama = store.messages[i].array[0].pushName
+                     teks += `⬡ *Nome:* ${nama}\n⬡ *Do utilizador :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+                 }
+                 kurumi.sendTextWithMentions(m.chat, teks, m)
+             }
+             break
+                case 'listgp': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+                 let teks = `⬣ *LISTA GRUPO DE BATE-PAPO*\n\nTotal de Grupo : ${anu.length} Grupo\n\n`
+                 for (let i of anu) {
+                     let metadata = await kurumi.groupMetadata(i)
+                     teks += `⬡ *Nome :* ${metadata.subject}\n⬡ *Proprietário :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Criado :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Membro :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                 }
+                 kurumi.sendTextWithMentions(m.chat, teks, m)
+             }
+             break
 		case 'promote': {
 			if (!m.isGroup) throw mess.group
 			if (!isGroupAdmins) throw mess.admin
