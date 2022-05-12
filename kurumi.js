@@ -695,11 +695,22 @@ case 'attp': case 'ttp': {
 │
 ╰───────⚜
 
-╭──⚜ *Download Menu*
+╭──⚜ *menu play
 │
 *├✎* ${prefix}play
 │
-╰───────⚜
+╰───────⚜ 
+
+
+╭──⚜ *Convert Menu*
+│
+*├✎* ${prefix}google
+*├✎* ${prefix}pinterest
+*├✎* ${prefix}wllpaper
+*├✎* ${prefix}emoji
+*├✎* ${prefix}emoji2
+│
+╰───────⚜ 
 
 ╭──⚜ *Convert Menu*
 │
