@@ -216,14 +216,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			await kurumi.groupAcceptInvite(result).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 		}
 		break
-		case 'pinterest': {
-                m.reply(mess.wait)
-		let { pinterest } = require('./lib/scraper')                
-		anu = await pinterest(text)
-                result = anu[Math.floor(Math.random() * anu.length)]
-                kurumi.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
-               }
-            break	
+		
 				case 'wallpaper': {
                 if (!text) throw 'Insira um título de consulta'
 		let { wallpaper } = require('./lib/scraper')
@@ -240,6 +233,15 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
                     headerType: 4
                 }
                 kurumi.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
+            
+            case 'pinterest': {
+                m.reply(mess.wait)
+		let { pinterest } = require('./lib/scraper')
+                anu = await pinterest(text)
+                result = anu[Math.floor(Math.random() * anu.length)]
+                hisoka.sendMessage(m.chat, { image: { url: result }, caption: 'aqui esta' }, { quoted: m })
             }
             break
 				
@@ -375,7 +377,7 @@ case 'attp': case 'ttp': {
          }
          break
     case 'emoji2': {
-	    if (!text) throw `Exemplo : ${prefix + command} 😅`
+	    if (!text) throw `Exemplo : ${prefix + command} 🥹`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(text)}`)
 		for (let res of anu.results) {
 		    let encmedia = await kurumi.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
