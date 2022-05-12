@@ -1391,6 +1391,18 @@ Changes 📃
 		//                      Youtube                          //
 		//                                                       //
 		///////////////////////////////////////////////////////////
+		
+		case 'tomp3': {
+            if (/document/.test(mime)) throw `Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`
+            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`
+            if (!quoted) throw `Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`
+            m.reply(mess.wait)
+            let media = await quoted.download()
+            let { toAudio } = require('./lib/converter')
+            let audio = await toAudio(media, 'mp4')
+            kurumi.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${kurumi.user.name}.mp3`}, { quoted : m })
+            }
+            break
 
 			case 'play': case 'yt': {
 				if (!text) throw '_Eu preciso que você digite algo para pesquisar!_'
