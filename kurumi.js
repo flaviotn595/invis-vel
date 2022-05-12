@@ -341,6 +341,21 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply('_Usuario foi rebaixado a membro comum_')).catch((err) => m.reply(jsonformat(err)))
 		}
 		break
+case 'attp': case 'ttp': {
+           if (!text) throw `Exemplo : ${prefix + command} text`
+           await kurumi.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'kurumi', 'Bot', m, {asSticker: true})
+
+         }
+         break
+    case 'emoji2': {
+	    if (!text) throw `Example : ${prefix + command} 😅`
+		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(text)}`)
+		for (let res of anu.results) {
+		    let encmedia = await kurumi.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
+		    await fs.unlinkSync(encmedia)
+		}
+	    }
+	    break
 		case 'nsfw':
 			if (!m.isGroup) throw mess.group
 			if (!isGroupAdmins) throw mess.admin
@@ -435,7 +450,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 
 		case 'sourcne.': {
 			const fnix = 'https://telegra.ph/file/d7d397bcc9208d6407818.jpg'
-			anu = `┌──⭓ *kurumi Bot*\n│\n*├✎* _Bot com intuito de aprender_\n│  _programação em JavaScript_\n│\n*├✎* *Dono*: fnixdev\nAtulizacao GhostDev\n*├✎* https://github.com/flaviotn595/invis-vel\n│\n└───────⭓\n`
+			anu = `┌──⭓ *kurumi Bot* ✨\n│\n*├✎* _Bot com intuito de aprender_\n│  _programação em JavaScript_\n│\n*├✎* *Dono*: fnixdev\nAtulizacao GhostDev\n*├✎* https://github.com/flaviotn595/invis-vel\n│\n└───────⭓\n`
 			kurumi.sendMessage(m.chat, {
 				image: {
 					url: fnix
@@ -553,14 +568,14 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			let vcard = 'BEGIN:VCARD\n' // metadata of the contact card
 				+
 				'VERSION:3.0\n' +
-				'N:;fnix.;;;' +
-				'FN:Luis Gustavo.\n' +
-				'ORG:fnix (KuuhakuTeam);\n' +
-				'TEL;type=CELL;type=VOICE;waid=553189092420:+55 31 89092420\n' +
+				'N:;flavio.;;;' +
+				'FN: Flávio N.\n' +
+				'ORG:flavioJs (GhostDev);\n' +
+				'TEL;type=CELL;type=VOICE;waid=558181718175:+55 81 81718175\n' +
 				'END:VCARD'
 			kurumi.sendMessage(m.chat, {
 				contacts: {
-					displayName: 'fnix.',
+					displayName: 'flavio.',
 					contacts: [{
 						vcard
 					}]
@@ -669,7 +684,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			})
 		}
 break
-		case 'sk2': {
+		case 'sk2.1': {
 			const min = 'https://telegra.ph/file/df0aca18c37be0bbea032.jpg'
 			anu = `SK-Experience v2.1 | Stock
 
