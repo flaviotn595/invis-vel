@@ -29,6 +29,8 @@ const os = require('os')
 const speed = require('performance-now')
 const moment = require("moment-timezone")
 const yts = require('yt-search')
+const { Primbon } = require('scrape-primbon')
+const primbon = new Primbon()
 
 // const afk = require("./lib/afk");
 
