@@ -218,6 +218,27 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		break
 				
 				
+
+	
+
+	
+
+
+
+        
+case 'pinterest': {
+                m.reply(mess.wait)
+		let { pinterest } = require('./lib/scraper')
+                anu = await pinterest(text)
+                result = anu[Math.floor(Math.random() * anu.length)]
+                kurumi.sendMessage(m.chat, { image: { quoted: m })
+            }
+            break
+
+
+
+
+
 				
 				case 'wallpaper': {
                 if (!text) throw 'Insira um título de consulta'
