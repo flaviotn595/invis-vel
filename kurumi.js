@@ -224,16 +224,26 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 	
 
 
+          
 
-        
 case 'pinterest': {
+
                 m.reply(mess.wait)
-		let { pinterest } = require('./lib/scraper')
-                anu = await pinterest(text)
+
+		let { pinterest } = require('./lib/scraper')                anu = await pinterest(text)
+
                 result = anu[Math.floor(Math.random() * anu.length)]
-                kurumi.sendMessage(m.chat, { image: { quoted: m })
+
+                kurumi.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
+
             }
+
             break
+
+
+
+
+
 
 
 
