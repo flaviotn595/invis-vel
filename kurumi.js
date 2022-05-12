@@ -324,6 +324,13 @@ Tipo *desistir* render-se e admitir a derrota`
                 kurumi.sendMessage(m.chat, reactionMessage)
             }
             break  
+            case 'deleta': case 'del': {
+                if (!m.quoted) throw false
+                let { chat, fromMe, id, isBaileys } = m.quoted
+                if (!isBaileys) throw 'A mensagem não foi enviada por um bot!'
+                kurumi.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+            }
+            break
 			case 'chat': {
 				if (!isCreator) throw mess.owner
 				if (!q) throw '_Opções_ :\n1 - mute\n2 - unmute'
