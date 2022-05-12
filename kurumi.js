@@ -349,26 +349,22 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 				mentions: participants.map(a => a.id)
 			})
 			break
-		case 'kick': {
-			if (!m.isGroup) throw mess.group
-			if (!isGroupAdmins) throw mess.admin
-			if (!isBotAdmins) throw mess.botAdmin
-			let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-			if (users == isCreator) throw mess.isowner
-			if (users) {
-				await kurumi.sendMessage(m.chat, {
-					video: {
-						url: "./src/banido.mp4"
-					},
-					caption: '_banido, pam, banido_'
-				}, {
-					quoted: m
-				}), kurumi.groupParticipantsUpdate(m.chat, [users], 'remove')
-			} else {
-				await m.reply('_Eu preciso que você marque ou mencione um usuario_')
-			}
-		}
-		break
+			case 'add': {
+		if (!m.isGroup) throw mess.group
+                if (!isBotAdmins) throw mess.botAdmin
+                if (!isAdmins) throw mess.admin
+		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+	}
+	break
+	   case 'kick': {
+		if (!m.isGroup) throw mess.group
+                if (!isBotAdmins) throw mess.botAdmin
+                if (!isAdmins) throw mess.admin
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+	}
+	break
 		case 'promote': {
 			if (!m.isGroup) throw mess.group
 			if (!isGroupAdmins) throw mess.admin
