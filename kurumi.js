@@ -349,11 +349,11 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 	}
 	break
 	 case 'listpv': {
-                 let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
-                 let teks = `⬣ *LISTA DE BATE-PAPO PESSOAL*\n\nTotal Chat : ${anu.length} Chat\n\n`
-                 for (let i of anu) {
-                     let nama = store.messages[i].array[0].pushName
-                     teks += `⬡ *Nome:* ${nama}\n⬡ *Do utilizador :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+   let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+   let teks = `⬣ *LISTA DE BATE-PAPO PESSOAL*\n\nTotal Chat : ${anu.length} Chat\n\n`
+    for (let i of anu) {
+    let nama = store.messages[i].array[0].pushName
+    teks += `⬡ *Nome:* ${nama}\n⬡ *Do utilizador :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
                  }
                  kurumi.sendTextWithMentions(m.chat, teks, m)
              }
