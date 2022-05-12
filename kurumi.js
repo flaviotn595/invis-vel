@@ -313,6 +313,17 @@ Tipo *desistir* render-se e admitir a derrota`
             }
             }
             break
+            case 'reacao': {
+                if (!isCreator) throw mess.owner
+                reactionMessage = {
+                    react: {
+                        text: args[0],
+                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
+                    }
+                }
+                kurumi.sendMessage(m.chat, reactionMessage)
+            }
+            break  
 			case 'chat': {
 				if (!isCreator) throw mess.owner
 				if (!q) throw '_Opções_ :\n1 - mute\n2 - unmute'
