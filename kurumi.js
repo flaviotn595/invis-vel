@@ -244,6 +244,21 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
                 kurumi.sendMessage(m.chat, { image: { url: result }, caption: 'aqui esta' }, { quoted: m })
             }
             break
+            
+            case 'google': {
+                if (!text) throw `exemplo : ${prefix + command} kurumi`
+                let google = require('google-it')
+                google({'query': text}).then(res => {
+                let teks = `Pesquisa do Google de : ${text}\n\n`
+                for (let g of res) {
+                teks += `⭔ *Título* : ${g.title}\n`
+                teks += `⭔ *Descrição* : ${g.snippet}\n`
+                teks += `⭔ *Link* : ${g.link}\n\n────────────────────────\n\n`
+                } 
+                m.reply(teks)
+                })
+                }
+                break
 				
 		case 'isowner': {
 			if (!m.isGroup) throw mess.group
