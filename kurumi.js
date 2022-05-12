@@ -216,6 +216,28 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			await kurumi.groupAcceptInvite(result).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 		}
 		break
+				
+				
+				
+				case 'wallpaper': {
+                if (!text) throw 'Insira um título de consulta'
+		let { wallpaper } = require('./lib/scraper')
+                anu = await wallpaper(text)
+                result = anu[Math.floor(Math.random() * anu.length)]
+		let buttons = [
+                    {buttonId: `wallpaper ${text}`, buttonText: {displayText: 'Próxima imagem'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: result.image[0] },
+                    caption: `⭔ Titulo : ${result.title}\n⭔ Categoria : ${result.type}\n⭔ Detalhe : ${result.source}\n⭔ Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
+                    footer: kurumi.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                kurumi.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
+				
 		case 'isowner': {
 			if (!m.isGroup) throw mess.group
 			if (!isGroupAdmins) throw mess.admin
