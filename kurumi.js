@@ -1343,6 +1343,18 @@ Changes 📃
 			})
 		}
 		break
+		        case 'block': {
+		if (!isCreator) throw mess.owner
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		await kurumi.updateBlockStatus(users, 'block').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+	}
+	break
+        case 'desbloquear': {
+		if (!isCreator) throw mess.owner
+		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		await kurumi.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+	}
+	break
 		case 'hentaigif': {
 			if (!m.isGroup) return m.reply(mess.group)
 			let neko = await axios.get('https://nekos.life/api/v2/img/Random_hentai_gif')
