@@ -1423,7 +1423,7 @@ Changes 📃
 @${proximo1.split('@')[0]} 😈️ @${proximo2.split('@')[0]} 🥵 @${proximo3.split('@')[0]}`
             let menst = [proximo1, proximo2, proximo3]
             let buttons = [
-                        { buttonId: 'trial', buttonText: { displayText: 'Proximo Trial' }, type: 1 }
+                        { buttonId: '/trial', buttonText: { displayText: 'Proximo Trial' }, type: 1 }
                     ]
                     await kurumi.sendButtonText(m.chat, buttons, cupido2, kurumi.user.name, m, {mentions: menst})
             }
