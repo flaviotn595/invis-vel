@@ -1401,6 +1401,21 @@ Changes 📃
                     await kurumi.sendButtonText(m.chat, buttons, cupido, kurumi.user.name, m, {mentions: menst})
             }
             break
+                        case 'trial': {
+            if (!m.isGroup) throw mess.group
+            let member = participants.map(u => u.id)
+            let proximo1 = member[Math.floor(Math.random() * member.length)]
+            let proximo2 = member[Math.floor(Math.random() * member.length)]
+            let proximo3 = member[Math.floor(Math.random() * member.length)]
+            let cupido2 = `Trial vai da bom ne hummmmmmm
+@${proximo1.split('@')[0]} 😈️ @${proximo2.split('@')[0]} 🥵 @${proximo2.split('@')[0]}`
+            let menst = [proximo1, proximo2, proximo3]
+            let buttons = [
+                        { buttonId: 'trial', buttonText: { displayText: 'Proximo Trial' }, type: 1 }
+                    ]
+                    await kurumi.sendButtonText(m.chat, buttons, cupido2, kurumi.user.name, m, {mentions: menst})
+            }
+            break
 		           case 'signo': case 'zodiaco': {
                 if (!text) throw `Exemplo : ${prefix+ command} 7 7 2005`
                 let zodiak = [
