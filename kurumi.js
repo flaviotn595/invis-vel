@@ -1428,7 +1428,7 @@ Changes 📃
                     await kurumi.sendButtonText(m.chat, buttons, cupido2, kurumi.user.name, m, {mentions: menst})
             }
             break
-		           case 'signo': case 'zodiaco': {
+		           case 'signo': case 'signos': {
                 if (!text) throw `Exemplo : ${prefix+ command} 7 7 2005`
                 let zodiak = [
                     ["capricórnio", new Date(1970, 0, 1)],
