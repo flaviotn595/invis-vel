@@ -1387,6 +1387,20 @@ Changes 📃
 			})
 		}
 		break
+		case 'casal': {
+            if (!m.isGroup) throw mess.group
+            let member = participants.map(u => u.id)
+            let proximo1 = member[Math.floor(Math.random() * member.length)]
+            let proximo2 = member[Math.floor(Math.random() * member.length)]
+            let cupido = `Casal Do ano vai para 
+            @${proximo1.split('@')[0]} ❤️ @${proximo2.split('@')[0]}`
+            let menst = [proximo1, proximo2]
+            let buttons = [
+                        { buttonId: 'casal', buttonText: { displayText: 'Proximo Casal' }, type: 1 }
+                    ]
+                    await kurumi.sendButtonText(m.chat, buttons, cupido, kurumi.user.name, m, {mentions: menst})
+            }
+            break
 		           case 'signo': case 'zodiaco': {
                 if (!text) throw `Exemplo : ${prefix+ command} 7 7 2005`
                 let zodiak = [
