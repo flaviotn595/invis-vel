@@ -1475,10 +1475,10 @@ Changes 📃
 		///////////////////////////////////////////////////////////
 		
 		case 'tomp': {
-            if (/document/.test(mime)) return reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
-            if (!/video/.test(mime) && !/audio/.test(mime)) return replay(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
-            if (!quoted) return replay(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
-            reply(mess.wait)
+  if (/document/.test(mime)) return m.reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
+  if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
+   if (!quoted) return replay(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
+            m.reply(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
