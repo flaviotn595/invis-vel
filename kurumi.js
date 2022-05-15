@@ -790,14 +790,12 @@ case 'attp': case 'ttp': {
 		  anu =`┌─⚜
 │「 Ola 👋 」
 └┬⚜ 「 ${pushname} 」
-┌┤✑  Eu sou a  KurumiBot 🤗
+┌┤✑ *Eu sou a KurumiBot*🤗
 │└───────────────┈ ⳹
 │    BOT INFO 
 ├✎ Biblioteca : Baileys-MD
 ├✎ Prefix : ( ${prefix} )
 ├✎ Uptime : ${runtime(process.uptime())}
-├✎ Nome do Bot : ${global.botname}
-├✎ Nome do Dono : ${global.ownername}
 ├✎ Número do Dono : ${global.owner}
 ├✎ Plataforma*: ${os.platform()}
 └┬──────────────┈ ⳹
