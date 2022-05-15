@@ -111,9 +111,50 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 		const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 		const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-
-		// NSFW
+			// NSFW
 		const isNsfw = m.isGroup ? nsfw.includes(groupMetadata.id) : false
+		
+		        let picaks = [flaming,fluming,flarun,flasmurf]
+		let picak = picaks[Math.floor(Math.random() * picaks.length)]
+		
+          try {
+            let isNumber = x => typeof x === 'number' && !isNaN(x)
+            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
+            let user = global.db.data.users[m.sender]
+            if (typeof user !== 'object') global.db.data.users[m.sender] = {}
+            if (user) {
+                if (!isNumber(user.afkTime)) user.afkTime = -1
+                if (!('afkReason' in user)) user.afkReason = ''
+                if (!isNumber(user.limit)) user.limit = limitUser
+            } else global.db.data.users[m.sender] = {
+                afkTime: -1,
+                afkReason: '',
+                limit: limitUser,
+            }
+    
+            let chats = global.db.data.chats[m.chat]
+            if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
+            if (chats) {
+                if (!('mute' in chats)) chats.mute = false
+                if (!('antilink' in chats)) chats.antilink = false
+            } else global.db.data.chats[m.chat] = {
+                mute: false,
+                antilink: false,
+            }
+		
+	    let setting = global.db.data.settings[botNumber]
+            if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
+	    if (setting) {
+		if (!isNumber(setting.status)) setting.status = 0
+		if (!('autobio' in setting)) setting.autobio = false
+	    } else global.db.data.settings[botNumber] = {
+		status: 0,
+		autobio: false,
+	    }
+	    
+        } catch (err) {
+            console.error(err)
+        }
 		
 		
 
@@ -248,6 +289,30 @@ Tipo *desistir* render-se e admitir a derrota`
 		//                Comandos de Dono                       //
 		//                                                       //
 		///////////////////////////////////////////////////////////
+		
+			    let mentionUser = [...new Set([...(m.mentionedJid || []), ...(m.quoted ? [m.quoted.sender] : [])])]
+	    for (let jid of mentionUser) {
+            let user = global.db.data.users[jid]
+            if (!user) continue
+            let afkTime = user.afkTime
+            if (!afkTime || afkTime < 0) continue
+            let reason = user.afkReason || ''
+            reply(`
+Don'não marque ele!
+He'Pois ele esta em AFK/Offline ${reason ? 'dengan alasan ' + reason : 'no reason'}
+It'foi ${clockString(new Date - afkTime)}
+`.trim())
+        }
+
+        if (db.data.users[m.sender].afkTime > -1) {
+            let user = global.db.data.users[m.sender]
+            reply(`
+Você voltou on-line de AFK${user.afkReason ? ' after ' + user.afkReason : ''}
+In ${clockString(new Date - user.afkTime)}
+`.trim())
+            user.afkTime = -1
+            user.afkReason = ''
+        }
 
 		switch (command) {
 		  case 'ttc': case 'ttt': case 'tictactoe': {
@@ -340,6 +405,13 @@ Tipo *desistir* render-se e admitir a derrota`
                 kurumi.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
+            case 'afk': {
+                let user = global.db.data.users[m.sender]
+                user.afkTime = + new Date
+                user.afkReason = text
+                m.reply(`${m.pushName} Has Gone Afk/Offline${text ? ': ' + text : ''}`)
+            }
+            break	
 			case 'chat': {
 				if (!isCreator) throw mess.owner
 				if (!q) throw '_Opções_ :\n1 - mute\n2 - unmute'
