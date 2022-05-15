@@ -78,6 +78,22 @@ const {
 	parseMention,
 	getRandom
 } = require('./lib/myfunc')
+const { smsg, 
+  formatp, 
+  tanggal, 
+  formatDate, getTime, 
+  isUrl, 
+  sleep,
+  clockString, 
+  runtime,
+  fetchJson, 
+  getBuffer, 
+  jsonformat, 
+  format, 
+  parseMention, 
+  getRandom 
+  
+} = require('./lib/myfunc2')
 
 const { yta, ytv } = require('./lib/y2mate')
 moment.tz.setDefault("America/Sao_Paulo").locale("pt");
@@ -373,6 +389,12 @@ Tipo *desistir* render-se e admitir a derrota`
                     headerType: 4
                 }
                 kurumi.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
+            
+            case 'leave': {
+                if (!isCreator) return replay(`${mess.owner}`)
+                await kurumi.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
             
