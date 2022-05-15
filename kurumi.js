@@ -787,17 +787,7 @@ case 'attp': case 'ttp': {
 		}
 		break
 		case 'menu': {
-		timestampe = speed();
-latensie = speed() - timestampe
- anu = ` `
-const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-       templateMessage: {
-        hydratedTemplate: {
-        hydratedContentText: anu,
-        locationMessage: {
-        jpegThumbnail: fs.readFileSync('./src/kurumi.jpg')},
-          hydratedFooterText: `
-┌─⚜
+		  anu =`┌─⚜
 │「 Ola 👋 」
 └┬⚜ 「 ${pushname} 」
 ┌┤✑  Eu sou a  KurumiBot 🤗
@@ -805,7 +795,6 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 │    BOT INFO 
 ├✎ Biblioteca : Baileys-MD
 ├✎ Prefix : ( ${prefix} )
-├✎ Velocidade : ${latensie.toFixed(4)} miliseconds
 ├✎ Uptime : ${runtime(process.uptime())}
 ├✎ Nome do Bot : ${global.botname}
 ├✎ Nome do Dono : ${global.ownername}
@@ -813,8 +802,17 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 ├✎ Plataforma*: ${os.platform()}
 └┬──────────────┈ ⳹
    │✑ *Selecione o botão abaixo*
-   └───────────────┈ ⳹`,
-		        hydratedContentText: anu,
+   └───────────────┈ ⳹`
+            let message = await prepareWAMessageMedia({
+				image: fs.readFileSync('./src/kurumi.jpg')
+			}, {
+				upload: kurumi.waUploadToServer
+			})
+			const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+				templateMessage: {
+					hydratedTemplate: {
+						imageMessage: message.imageMessage,
+						hydratedContentText: anu,
 						hydratedButtons: [{
 							urlButton: {
                                     displayText: 'Github',
