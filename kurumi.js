@@ -1150,7 +1150,7 @@ Changes 📃
 *├✎* ${prefix}neko
 *├✎* ${prefix}waifu
 │
-╰───────⚜
+╰───────⚜`
 			let animeMessage = {
 				image: {
 					url: './src/kurumi.jpg'
