@@ -810,7 +810,6 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 *├✎ Nome do Dono* : ${global.ownername}
 *├✎ Número do Dono* : ${global.owner}
 *├✎ Plataforma* : ${os.platform()}
-*├✎ Total de User* : ${Object.keys(global.db.data.users).length}
 └┬──────────────┈ ⳹
    │✑ *Selecione o botão abaixo*
    └───────────────┈ ⳹`,
