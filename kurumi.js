@@ -792,12 +792,12 @@ case 'attp': case 'ttp': {
 └┬⚜ 「 ${pushname} 」
 ┌┤✑ *Eu sou a KurumiBot*🤗
 │└───────────────┈ ⳹
-│    BOT INFO 
+│      「 BOT INFO 」
 ├✎ Biblioteca : Baileys-MD
 ├✎ Prefix : ( ${prefix} )
 ├✎ Uptime : ${runtime(process.uptime())}
 ├✎ Número do Dono : ${global.owner}
-├✎ Plataforma*: ${os.platform()}
+├✎ Plataforma : ${os.platform()}
 └┬──────────────┈ ⳹
    │✑ *Selecione o botão abaixo*
    └───────────────┈ ⳹`
