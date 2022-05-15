@@ -787,16 +787,24 @@ case 'attp': case 'ttp': {
 		}
 		break
 		case 'menu': {
-			anu = `╭──⚜ *INFORMAÇÕES DO BOT*
-│
-*├✎ Biblioteca* : *Baileys-MD*.
+			anu = `┌─⚜
+*│「 Ola 👋 」*
+*└┬⚜ 「 ${pushname} 」*
+┌┤✑ *Eu sou a ${global.botname} * 🤗
+│└───────────────┈ ⳹
+*│ 「 BOT INFO 」*
+*├✎ Biblioteca* : *Baileys-MD*
 *├✎ Prefix* : ( ${prefix} )
-*├✎ Uptime*: ${runtime(process.uptime())}
-*├✎ Data* : ${moment.tz('America/Sao_Paulo').format('DD/MM/YY')}
-*├✎ Horário* : ${moment.tz('America/Sao_Paulo').format('HH:mm:ss')}
-*├✎ Device* : ${platform()}
-│
-╰───────⚜`
+*├✎ Velocidade* : ${latensie.toFixed(4)} miliseconds
+*├✎ Uptime* : ${runtime(process.uptime())}
+*├✎ Nome do Bot* : ${global.botname}
+*├✎ Nome do Dono* : ${global.ownername}
+*├✎ Número do Dono* : ${global.owner}
+*├✎ Plataforma* : ${os.platform()}
+*├✎ Total de User* : ${Object.keys(global.db.data.users).length}
+└┬──────────────┈ ⳹
+   │✑ *Selecione o botão abaixo*
+   └───────────────┈ ⳹`
 			let message = await prepareWAMessageMedia({
 				image: fs.readFileSync('./src/kurumi.jpg')
 			}, {
