@@ -111,8 +111,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 		const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 		const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-			// NSFW
-		const isNsfw = m.isGroup ? nsfw.includes(groupMetadata.id) : false
 		
 	    let setting = global.db.data.settings[botNumber]
             if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
@@ -125,6 +123,9 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 	    }
 	    
 		
+		// NSFW
+    const isNsfw = m.isGroup ? nsfw.includes(groupMetadata.id) : false
+
 		
 
 		// AFK
@@ -170,74 +171,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		if (!kurumi.public) {
 			if (!m.key.fromMe) return
 		}
-		
-		        
-        //TicTacToe
-	    this.game = this.game ? this.game : {}
-	    let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
-	    if (room) {
-	    let ok
-	    let isWin = !1
-	    let isTie = !1
-	    let isSurrender = !1
-	    // m.reply(`[DEBUG]\n${parseInt(m.text)}`)
-	    if (!/^([1-9]|(me)?nyerah|surr?ender|off|skip)$/i.test(m.text)) return
-	    isSurrender = !/^[1-9]$/.test(m.text)
-	    if (m.sender !== room.game.currentTurn) { // nek wayahku
-	    if (!isSurrender) return !0
-	    }
-	    if (!isSurrender && 1 > (ok = room.game.turn(m.sender === room.game.playerO, parseInt(m.text) - 1))) {
-	    m.reply({
-	    '-3': 'O jogo terminou',
-	    '-2': 'Inválido',
-	    '-1': 'Posição inválida',
-	    0: 'Posição inválida',
-	    }[ok])
-	    return !0
-	    }
-	    if (m.sender === room.game.winner) isWin = true
-	    else if (room.game.board === 511) isTie = true
-	    let arr = room.game.render().map(v => {
-	    return {
-	    X: '❌',
-	    O: '⭕',
-	    1: '1️⃣',
-	    2: '2️⃣',
-	    3: '3️⃣',
-	    4: '4️⃣',
-	    5: '5️⃣',
-	    6: '6️⃣',
-	    7: '7️⃣',
-	    8: '8️⃣',
-	    9: '9️⃣',
-	    }[v]
-	    })
-	    if (isSurrender) {
-	    room.game._currentTurn = m.sender === room.game.playerX
-	    isWin = true
-	    }
-	    let winner = isSurrender ? room.game.currentTurn : room.game.winner
-	    let str = `ID do quarto: ${room.id}
 
-${arr.slice(0, 3).join('')}
-${arr.slice(3, 6).join('')}
-${arr.slice(6).join('')}
-
-${isWin ? `@${winner.split('@')[0]} Vencer!` : isTie ? `Fim de jogo` : `É sua vez ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
-❌: @${room.game.playerX.split('@')[0]}
-⭕: @${room.game.playerO.split('@')[0]}
-
-Tipo *desistir* render-se e admitir a derrota`
-	    if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
-	    room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-	    if (room.x !== room.o) await kurumi.sendText(room.x, str, m, { mentions: parseMention(str) } )
-	    await kurumi.sendText(room.o, str, m, { mentions: parseMention(str) } )
-	    if (isTie || isWin) {
-	    delete this.game[room.id]
-	    }
-	    }
-
-	
         
 		///////////////////////////////////////////////////////////
 		//                                                       //
