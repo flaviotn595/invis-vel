@@ -796,20 +796,21 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
         hydratedContentText: anu,
         locationMessage: {
         jpegThumbnail: fs.readFileSync('./src/kurumi.jpg')},
-          hydratedFooterText: `┌─⚜
-*│「 Ola 👋 」*
-*└┬⚜ 「 ${pushname} 」*
-┌┤✑ *Eu sou a ${global.botname} * 🤗
+          hydratedFooterText: `
+┌─⚜
+│「 Ola 👋 」
+└┬⚜ 「 ${pushname} 」
+┌┤✑  Eu sou a  KurumiBot 🤗
 │└───────────────┈ ⳹
-*│ 「 BOT INFO 」*
-*├✎ Biblioteca* : *Baileys-MD*
-*├✎ Prefix* : ( ${prefix} )
-*├✎ Velocidade* : ${latensie.toFixed(4)} miliseconds
-*├✎ Uptime* : ${runtime(process.uptime())}
-*├✎ Nome do Bot* : ${global.botname}
-*├✎ Nome do Dono* : ${global.ownername}
-*├✎ Número do Dono* : ${global.owner}
-*├✎ Plataforma* : ${os.platform()}
+│    BOT INFO 
+├✎ Biblioteca : Baileys-MD
+├✎ Prefix : ( ${prefix} )
+├✎ Velocidade : ${latensie.toFixed(4)} miliseconds
+├✎ Uptime : ${runtime(process.uptime())}
+├✎ Nome do Bot : ${global.botname}
+├✎ Nome do Dono : ${global.ownername}
+├✎ Número do Dono : ${global.owner}
+├✎ Plataforma*: ${os.platform()}
 └┬──────────────┈ ⳹
    │✑ *Selecione o botão abaixo*
    └───────────────┈ ⳹`,
