@@ -111,16 +111,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 		const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 		const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-		
-	    let setting = global.db.data.settings[botNumber]
-            if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
-	    if (setting) {
-		if (!isNumber(setting.status)) setting.status = 0
-		if (!('autobio' in setting)) setting.autobio = false
-	    } else global.db.data.settings[botNumber] = {
-		status: 0,
-		autobio: false,
-	    }
 	    
 		
 		// NSFW
@@ -194,70 +184,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		///////////////////////////////////////////////////////////
 
 		switch (command) {
-		  case 'ttc': case 'ttt': case 'tictactoe': {
-            let TicTacToe = require("./lib/tictactoe")
-            this.game = this.game ? this.game : {}
-            if (Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) throw 'Você ainda está no jogo'
-            let room = Object.values(this.game).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
-            if (room) {
-            m.reply('Parceiros encontrados!')
-            room.o = m.chat
-            room.game.playerO = m.sender
-            room.state = 'PLAYING'
-            let arr = room.game.render().map(v => {
-            return {
-            X: '❌',
-            O: '⭕',
-            1: '1️⃣',
-            2: '2️⃣',
-            3: '3️⃣',
-            4: '4️⃣',
-            5: '5️⃣',
-            6: '6️⃣',
-            7: '7️⃣',
-            8: '8️⃣',
-            9: '9️⃣',
-            }[v]
-            })
-            let str = `ID do quarto: ${room.id}
-
-${arr.slice(0, 3).join('')}
-${arr.slice(3, 6).join('')}
-${arr.slice(6).join('')}
-
-Esperando @${room.game.currentTurn.split('@')[0]}
-
-Tipo *desistir* render-se e admitir a derrota`
-            if (room.x !== room.o) await hisoka.sendText(room.x, str, m, { mentions: parseMention(str) } )
-            await kurumi.sendText(room.o, str, m, { mentions: parseMention(str) } )
-            } else {
-            room = {
-            id: 'tictactoe-' + (+new Date),
-            x: m.chat,
-            o: '',
-            game: new TicTacToe(m.sender, 'o'),
-            state: 'WAITING'
-            }
-            if (text) room.name = text
-            m.reply('Esperando o parceiro' + (text ? ` digite o comando abaixo ${prefix}${command} ${text}` : ''))
-            this.game[room.id] = room
-            }
-            }
-            break
-            case 'delttc': case 'delttt': {
-            this.game = this.game ? this.game : {}
-            try {
-            if (this.game) {
-            delete this.game
-            kurumi.sendText(m.chat, `Excluir com sucesso a sessão TicTacToe`, m)
-            } else if (!this.game) {
-            m.reply(`Sessão TicTacToe🎮 não existe`)
-            } else throw '?'
-            } catch (e) {
-            m.reply('estragado')
-            }
-            }
-            break
             case 'setexif': {
           if (!isCreator) return m.reply(`${mess.owner}`)
                if (!text) return m.reply(`Exemplo : ${prefix + command} kurumi|Bot`)
