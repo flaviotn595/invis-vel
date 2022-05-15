@@ -787,7 +787,16 @@ case 'attp': case 'ttp': {
 		}
 		break
 		case 'menu': {
-			anu = `┌─⚜
+		timestampe = speed();
+latensie = speed() - timestampe
+ anu = ` `
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+       templateMessage: {
+        hydratedTemplate: {
+        hydratedContentText: anu,
+        locationMessage: {
+        jpegThumbnail: fs.readFileSync('./src/kurumi.jpg')},
+          hydratedFooterText: `┌─⚜
 *│「 Ola 👋 」*
 *└┬⚜ 「 ${pushname} 」*
 ┌┤✑ *Eu sou a ${global.botname} * 🤗
@@ -804,17 +813,8 @@ case 'attp': case 'ttp': {
 *├✎ Total de User* : ${Object.keys(global.db.data.users).length}
 └┬──────────────┈ ⳹
    │✑ *Selecione o botão abaixo*
-   └───────────────┈ ⳹`
-			let message = await prepareWAMessageMedia({
-				image: fs.readFileSync('./src/kurumi.jpg')
-			}, {
-				upload: kurumi.waUploadToServer
-			})
-			const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-				templateMessage: {
-					hydratedTemplate: {
-						imageMessage: message.imageMessage,
-						hydratedContentText: anu,
+   └───────────────┈ ⳹`,
+		        hydratedContentText: anu,
 						hydratedButtons: [{
 							urlButton: {
                                     displayText: 'Github',
