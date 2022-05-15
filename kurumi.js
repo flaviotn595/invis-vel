@@ -320,7 +320,7 @@ Tipo *desistir* render-se e admitir a derrota`
                if (!text) return m.replay(`Exemplo : ${prefix + command} kurumi|Bot`)
           global.packname = text.split("|")[0]
           global.author = text.split("|")[1]
-          reply(`Exif foi alterado com sucesso para\n\n🐶 Packname : ${global.packname}\n🐶 Author : ${global.author}`)
+          m.reply(`Exif foi alterado com sucesso para\n\n🐶 Packname : ${global.packname}\n🐶 Author : ${global.author}`)
             }
             break
             case 'reacao': {
