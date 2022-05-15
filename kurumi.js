@@ -114,10 +114,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			// NSFW
 		const isNsfw = m.isGroup ? nsfw.includes(groupMetadata.id) : false
 		
-            let isNumber = x => typeof x === 'number' && !isNaN(x)
-            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
-            let user = global.db.data.users[m.sender]
-            if (typeof user !== 'object') global.db.data.users[m.sender] = {}
             if (user) {
                 if (!isNumber(user.afkTime)) user.afkTime = -1
                 if (!('afkReason' in user)) user.afkReason = ''
