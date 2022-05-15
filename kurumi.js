@@ -736,25 +736,6 @@ case 'attp': case 'ttp': {
 			await fs.unlinkSync(media)
 		}
 		break
-		case 'togif': {
-			if (!m.isGroup) throw mess.group
-			if (!quoted) throw 'Reply Image'
-			if (!/webp/.test(mime)) throw `Responda a um sticker *${prefix + command}*`
-			m.reply(mess.wait)
-			let media = await kurumi.downloadAndSaveMediaMessage(quoted)
-			let webpToMp4 = await webp2mp4File(media)
-			await kurumi.sendMessage(m.chat, {
-				video: {
-					url: webpToMp4.result,
-					caption: 'Convert Webp To Video'
-				},
-				gifPlayback: true
-			}, {
-				quoted: m
-			})
-			await fs.unlinkSync(media)
-		}
-		break
 		case 'tourl': {
 			if (!m.isGroup) throw mess.group
 			m.reply(mess.wait)
