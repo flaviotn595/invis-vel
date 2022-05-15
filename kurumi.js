@@ -506,9 +506,9 @@ Tipo *desistir* render-se e admitir a derrota`
 	}
 	break
 	   case 'kick': {
-		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+	if (!m.isGroup) return m.replay(`${mess.group}`)
+  if (!isBotAdmins) return m.replay(`${mess.botAdmin}`)
+  if (!isAdmins) return m.replay(`${mess.admin}`)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
@@ -632,9 +632,9 @@ case 'attp': case 'ttp': {
 		}
 		break
   case 'grupo': case 'grup': {
-                if (!m.isGroup) throw mess.group
-
-			if (!isBotAdmins) throw mess.botAdmin
+    if (!m.isGroup) return m.replay(`${mess.group}`)
+    if (!isBotAdmins) return m.replay(`${mess.botAdmin}`)
+    if (!isAdmins) return m.replay(`${mess.admin}`)
                 if (args[0] === 'fechar'){
                     await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso`)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'abrir'){
@@ -847,7 +847,6 @@ case 'attp': case 'ttp': {
 *├✎* ${prefix}kick @user
 *├✎* ${prefix}promote @user
 *├✎* ${prefix}demote @user
-*├✎* ${prefix}nsfw [opção]
 │
 ╰───────⚜
 
@@ -872,6 +871,7 @@ case 'attp': case 'ttp': {
 *├✎* ${prefix}chat [opção]
 *├✎* ${prefix}join [link]
 *├✎* ${prefix}leave
+*├✎* ${prefix}setexif
 *├✎* ${prefix}block @user
 *├✎* ${prefix}unblock @user
 │
