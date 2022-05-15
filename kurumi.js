@@ -651,7 +651,7 @@ case 'attp': case 'ttp': {
             break 
 		case 'kurumi': {
 			if (!text) throw '_Acho que você tem Q.I baixo._'
-			let res = await axios.get(`https://api.simsimi.net/v2/?text=${text}&lc=pt&cf=false`)
+			let res = await axios.get(`https://sim.vuiz.net/?text=${text}&lang=pt&cf=false`)
 			let simitext = res.data.success
 			await m.reply(`_${simitext}_`)
 		}
