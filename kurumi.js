@@ -717,7 +717,7 @@ case 'attp': case 'ttp': {
                 })
             }
             break
-		case 'tomp4':
+		case 'toigif':
 		case 'tovideo': {
 			if (!m.isGroup) throw mess.group
 			if (!quoted) throw 'Reply Image'
@@ -843,28 +843,20 @@ case 'attp': case 'ttp': {
 │
 ╰───────⚜
 
-╭──⚜ *menu play
+╭──⚜ *Play & Convert & pesqu*
 │
-*├✎* ${prefix}play
+*├✎* ${prefix}play 🎶
+*├✎* ${prefix}tomp3 📁
+*├✎* ${prefix}sticker 📄
+*├✎* ${prefix}toimg 🖼️
+*├✎* ${prefix}toigif 📹
+*├✎* ${prefix}google 🌐
+*├✎* ${prefix}pinterest 🖼️
+*├✎* ${prefix}wllpaper 🖼️
+*├✎* ${prefix}emoji 🤗 
+*├✎* ${prefix}emoji2 🤗
 │
-╰───────⚜ 
-
-
-╭──⚜ *Convert Menu*
-│
-*├✎* ${prefix}google
-*├✎* ${prefix}pinterest
-*├✎* ${prefix}wllpaper
-*├✎* ${prefix}emoji
-*├✎* ${prefix}emoji2
-│
-╰───────⚜ 
-
-╭──⚜ *Convert Menu*
-│
-*├✎* ${prefix}s
-*├✎* ${prefix}sticker
-╰───────⚜ 
+╰───────⚜
 
 ╭──⚜ *Menu Dono*
 │
