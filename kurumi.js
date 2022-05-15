@@ -384,8 +384,8 @@ Tipo *desistir* render-se e admitir a derrota`
             break
             
             case 'leave': {
-                if (!isCreator) return reply(`${mess.owner}`)
-                await kurumi.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+                if (!isCreator) return m.reply(`${mess.owner}`)
+                await kurumi.groupLeaveall(m.chat).then((res) => reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
             }
             break
             
