@@ -1474,15 +1474,15 @@ Changes 📃
 		//                                                       //
 		///////////////////////////////////////////////////////////
 		
-		case 'tomp3': {
-            if (/document/.test(mime)) throw `Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`
-            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`
-            if (!quoted) throw `Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`
-            m.reply(mess.wait)
+		case 'tomp': {
+            if (/document/.test(mime)) return reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
+            if (!/video/.test(mime) && !/audio/.test(mime)) return replay(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
+            if (!quoted) return replay(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
+            reply(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            kurumi.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${kurumi.user.name}.mp3`}, { quoted : m })
+            kurumi.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Converted By ${kurumi.user.name}.mp3`}, { quoted : m })
             }
             break
             		   case 'bass':
