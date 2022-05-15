@@ -1151,12 +1151,6 @@ Changes 📃
 *├✎* ${prefix}waifu
 │
 ╰───────⚜
-
-╭──⚜ *Hentai Menu*
-│
-*├✎* ${prefix}hentai
-│
-╰───────⚜`
 			let animeMessage = {
 				image: {
 					url: './src/kurumi.jpg'
@@ -1254,7 +1248,7 @@ Changes 📃
 			})
 		}
 		break
-		case 'hentai': {
+	/*	case 'hentai': {
 			if (!m.isGroup) return m.reply(mess.group)
 			let neko = await axios.get('https://nekos.life/api/v2/img/hentai')
 			
@@ -1267,7 +1261,7 @@ Changes 📃
 				quoted: m
 			})
 		}
-		break
+		break*/
 		case 'boobs': {
 			if (!m.isGroup) return m.reply(mess.group)
 			let neko = await axios.get('https://nekos.life/api/v2/img/boobs')
