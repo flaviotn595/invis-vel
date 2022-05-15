@@ -114,10 +114,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 			// NSFW
 		const isNsfw = m.isGroup ? nsfw.includes(groupMetadata.id) : false
 		
-		        let picaks = [flaming,fluming,flarun,flasmurf]
-		let picak = picaks[Math.floor(Math.random() * picaks.length)]
-		
-          try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
             let user = global.db.data.users[m.sender]
@@ -152,9 +148,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		autobio: false,
 	    }
 	    
-        } catch (err) {
-            console.error(err)
-        }
 		
 		
 
