@@ -316,8 +316,8 @@ Tipo *desistir* render-se e admitir a derrota`
             }
             break
             case 'setexif': {
-               if (!isCreator) return m.replay(`${mess.owner}`)
-               if (!text) return m.replay(`Exemplo : ${prefix + command} kurumi|Bot`)
+          if (!isCreator) return m.reply(`${mess.owner}`)
+               if (!text) return m.reply(`Exemplo : ${prefix + command} kurumi|Bot`)
           global.packname = text.split("|")[0]
           global.author = text.split("|")[1]
           m.reply(`Exif foi alterado com sucesso para\n\n🐶 Packname : ${global.packname}\n🐶 Author : ${global.author}`)
@@ -385,7 +385,7 @@ Tipo *desistir* render-se e admitir a derrota`
             break
             
             case 'leave': {
-                if (!isCreator) return replay(`${mess.owner}`)
+                if (!isCreator) return reply(`${mess.owner}`)
                 await kurumi.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
@@ -506,9 +506,9 @@ Tipo *desistir* render-se e admitir a derrota`
 	}
 	break
 	   case 'kick': {
-	if (!m.isGroup) return m.replay(`${mess.group}`)
-  if (!isBotAdmins) return m.replay(`${mess.botAdmin}`)
-  if (!isAdmins) return m.replay(`${mess.admin}`)
+	if (!m.isGroup) return m.reply(`${mess.group}`)
+  if (!isBotAdmins) return m.reply(`${mess.botAdmin}`)
+  if (!isAdmins) return m.reply(`${mess.admin}`)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
@@ -632,9 +632,9 @@ case 'attp': case 'ttp': {
 		}
 		break
   case 'grupo': case 'grup': {
-    if (!m.isGroup) return m.replay(`${mess.group}`)
-    if (!isBotAdmins) return m.replay(`${mess.botAdmin}`)
-    if (!isAdmins) return m.replay(`${mess.admin}`)
+    if (!m.isGroup) return m.reply(`${mess.group}`)
+    if (!isBotAdmins) return m.reply(`${mess.botAdmin}`)
+    if (!isAdmins) return m.reply(`${mess.admin}`)
                 if (args[0] === 'fechar'){
                     await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso`)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'abrir'){
@@ -1464,7 +1464,7 @@ Changes 📃
 		case 'tomp3': {
   if (/document/.test(mime)) return m.reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
   if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
-   if (!quoted) return replay(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
+   if (!quoted) return reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
             m.reply(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
