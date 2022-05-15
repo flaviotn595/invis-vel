@@ -680,37 +680,43 @@ case 'attp': case 'ttp': {
                 let encmedia = await kurumi.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return m.reply('Maksimal 10 detik!')
+                if ((quoted.msg || quoted).seconds > 11) return m.reply('limite e 10 segundos!')
                 let media = await quoted.download()
                 let encmedia = await kurumi.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else {
-                throw `Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`
+                throw `maque uma foto ou viode ${prefix + command}\nDuracao de 1-9 segundos`
                 }
             }
             break
+            
+            case 'togif': {
+                if (!quoted) return m.reply(`Imagem de resposta`)
+                if (!/webp/.test(mime)) return m.reply(`Responder adesivo com legenda *${prefix + command}*`)
+                m.reply(mess.wait)
+		let { webp2mp4File } = require('./lib/uploader')
+                let media = await kurumi.downloadAndSaveMediaMessage(quoted)
+                let webpToMp4 = await webp2mp4File(media)
+                await kurumi.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Converter Webp em vídeo' }, gifPlayback: true }, { quoted: m })
+                await fs.unlinkSync(media)
+            }
+            break
 
-		case 'toimage':
-		case 'toimg': {
-			if (!m.isGroup) throw mess.group
-			if (!quoted) throw 'Reply Image'
-			if (!/webp/.test(mime)) throw `Responda a um sticker *${prefix + command}*`
-			m.reply(mess.wait)
-			let media = await kurumi.downloadAndSaveMediaMessage(quoted)
-			let ran = await getRandom('.png')
-			exec(`ffmpeg -i ${media} ${ran}`, (err) => {
-				fs.unlinkSync(media)
-				if (err) throw err
-				let buffer = fs.readFileSync(ran)
-				kurumi.sendMessage(m.chat, {
-					image: buffer
-				}, {
-					quoted: m
-				})
-				fs.unlinkSync(ran)
-			})
-		}
-		break
+		case 'toge': case 'toimg': {
+    if (!quoted) return m.reply(`Imagem de resposta`)
+    if (!/webp/.test(mime)) m.reply(`Responder adesivo com legenda *${prefix + command}*`)
+     m.reply(mess.wait)
+    let media = await kurumi.downloadAndSaveMediaMessage(quoted)
+        let ran = await getRandom('.png')
+               exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+              fs.unlinkSync(media)
+                    if (err) reply(err)
+                    let buffer = fs.readFileSync(ran)
+                    kurumi.sendMessage(m.chat, { image: buffer }, { quoted: m })
+                    fs.unlinkSync(ran)
+                })
+            }
+            break
 		case 'tomp4':
 		case 'tovideo': {
 			if (!m.isGroup) throw mess.group
@@ -1474,7 +1480,7 @@ Changes 📃
 		//                                                       //
 		///////////////////////////////////////////////////////////
 		
-		case 'tomp': {
+		case 'tomp3': {
   if (/document/.test(mime)) return m.reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
   if (!/video/.test(mime) && !/audio/.test(mime)) return m.reply(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
    if (!quoted) return replay(`Enviar/responder vídeo/áudio que você deseja converter em MP3 com legenda ${prefix + command}`)
