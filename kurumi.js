@@ -309,7 +309,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		case 'ping':
 		case 'botstatus':
 		case 'statusbot': {
-			if (!isCreator) throw mess.owner
 			let timestamp = speed()
 			let latensi = speed() - timestamp
 			neww = performance.now()
