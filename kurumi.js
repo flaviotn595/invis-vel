@@ -436,7 +436,7 @@ id: '/ping'
 }
 }]
 let txt = `*「 Transmissão 」*\n\n${text}`
-kurumi.sendButtonText(i, txt, "© GhostJs ~ FlavioJs", btn)
+kurumi.send5ButImg(i, txt, "© GhostJs ~ FlavioJs", btn)
 }
 m.reply(`Enviando com sucesso a transmissão para ${anu.length} Grupo`)
 }
