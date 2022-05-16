@@ -444,11 +444,11 @@ let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender :
 await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(`Usuario foi rebaixado a membro comun por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
-case 'teste': {
+case 'emoji3': {
 if (!args.join(" ")) return m.reply('o emoji?')
 emoji.get(args.join(" ")).then(async(emoji) => {
 let mese = await kurumi.sendMessage(m.chat, {image:{url:emoji.images[4].url}, caption:"Feito!"}, {quoted:m})
-await kurumi.sendMessage(from, {text:"s"}, {quoted:mese})
+await kurumi.sendMessage(m.chat, {text:"s"}, {quoted:mese})
 })
 }
 break
