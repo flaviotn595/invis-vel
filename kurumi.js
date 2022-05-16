@@ -224,6 +224,21 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 				}
 			}
 			break
+			case 'chat': {
+if (!isCreator) return m.reply(mess.owner)
+if (!args.join(" ")) return m.reply(`Exemplo :\n${prefix + command} 55818171xxxx|Opa`)
+const uia = args.join(" ")
+const opa = uia.split("|")[0];
+const analise = uia.split("|")[1];
+humm = `*| RECURSOS DE BATE-PAPO |*
+
+Mensagem do administrador do bot
+Número : @${m.sender.split("@")[0]}
+Mensagem : ${analise}`
+kurumi.sendMessage(opa + "@s.whatsapp.net", {text:humm, mentions:[m.sender]}, {quoted:m})
+}
+await m.reply("Sucesso")
+break
 		case 'join': {
 			if (!isCreator) throw mess.owner
 			if (!text) throw 'Insira o link do grupo!'
@@ -729,7 +744,7 @@ break
 *├✎* ${prefix}sticker 📄
 *├✎* ${prefix}toimg 🖼️
 *├✎* ${prefix}toigif 📹
-*├✎* ${prefix}google 🌐
+*├✎* ${prefix}traduzir 🌐
 *├✎* ${prefix}pinterest 🖼️
 *├✎* ${prefix}wllpaper 🖼️
 *├✎* ${prefix}emoji 🤗 
@@ -743,6 +758,7 @@ break
 *├✎* ${prefix}chat [opção]
 *├✎* ${prefix}join [link]
 *├✎* ${prefix}leave
+*├✎* ${prefix}update
 *├✎* ${prefix}setexif
 *├✎* ${prefix}block @user
 *├✎* ${prefix}unblock @user
