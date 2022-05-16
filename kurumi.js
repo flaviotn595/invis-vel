@@ -506,10 +506,10 @@ case 'attp..': case 'ttp': {
     if (!isBotAdmins) return m.reply(mess.botAdmin)
     if (!isAdmins && !isCreator) return m.reply(mess.admin)
                 if (args[0] === 'fechar'){
-                    await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso Por ordens do admin *@${pushname}*
+                    await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso Por ordens do admin *${pushname}*
                       `)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'abrir'){
-                    await kurumi.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`Abrindo grupo com sucesso Por ordens do admin *@${pushname}*
+                    await kurumi.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`Abrindo grupo com sucesso Por ordens do admin *${pushname}*
                       `)).catch((err) => m.reply(jsonformat(err)))
                 } else {
                 let buttons = [
