@@ -210,17 +210,17 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
                 kurumi.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
-			case 'chat2': {
+			case 'mutagp': {
 				if (!isCreator) throw mess.owner
-				if (!q) throw '_Opções_ :\n1 - mute\n2 - unmute'
-				if (args[0] === 'mute') {
+				if (!q) throw '_Opções_ :\nMuta Digite 1\nDesmuta Digite 2'
+				if (args[0] === '1') {
 					kurumi.chatModify({
 						mute: true
-					}, m.chat, []).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
-				} else if (args[0] === 'unmute') {
+					}, m.chat, []).then((res) => m.reply(`Grupo Foi mutado Por ordem do meu Dono *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
+				} else if (args[0] === '2') {
 					kurumi.chatModify({
 						mute: null
-					}, m.chat, []).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+					}, m.chat, []).then((res) => m.reply(`Grupo foi Desmutado Por ordem do meu dono *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 				}
 			}
 			break
@@ -755,9 +755,10 @@ break
 ╭──⚜ *Menu Dono*
 │
 *├✎* ${prefix}ping
-*├✎* ${prefix}chat [opção]
+*├✎* ${prefix}chat 
 *├✎* ${prefix}join [link]
 *├✎* ${prefix}leave
+*├✎* ${prefix}mutagp [mute ou unmute]
 *├✎* ${prefix}update
 *├✎* ${prefix}setexif
 *├✎* ${prefix}block @user
