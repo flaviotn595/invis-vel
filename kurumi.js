@@ -412,7 +412,7 @@ await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.rep
 break
 case 'traduzir': case 'terjemahan': {
 if (!args.join(" ")) return m.reply("O texto?")
-tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=pt&kata=${args.join(" ")}`)
+tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=pt&dizer=${args.join(" ")}`)
 Infoo = tes.info
 Detek = tes.translate
 m.reply(`🌐Traduzir : ${Detek}\n📘Resultados : ${Infoo}`)
