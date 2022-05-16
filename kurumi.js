@@ -410,19 +410,12 @@ let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsap
 await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(`Usuario adicionado com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
-case 'tm': case 'bcgroup': {
-if (!isCreator) return m.reply(mess.owner)
-if (!args.join(" ")) return m.reply(`Cade o Testo Meu senhor?\n\nExemplo : ${prefix + command} ATUALIZACAO`)
-let getGroups = await kurumi.groupFetchAllParticipating()
-let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
-let anu = groups.map(v => v.id)
-m.reply(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de término ${anu.length * 1.5} segundo`)
-for (let i of anu) {
-await sleep(1500)
-let text = `*「 Transmissão 」*\n\n${text}`
-kurumi.sendMessage(m.chat, text, "© GhostJs ~ FlavioJs")
-}
-m.reply(`Enviando com sucesso a transmissão para ${anu.length} Grupo`)
+case 'traduzir': case 'terjemahan': {
+if (!args.join(" ")) return m.reply("O texto?")
+tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=pt&kata=${args.join(" ")}`)
+Infoo = tes.info
+Detek = tes.translate
+m.reply(`🌐Traduzir : ${Detek}\n📘Resultados : ${Infoo}`)
 }
 break
              case 'demote': {
