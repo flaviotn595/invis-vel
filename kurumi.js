@@ -365,22 +365,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 				mentions: participants.map(a => a.id)
 			})
 			break
-			case 'add': {
-		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
-		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
-	}
-	break
-	   case 'kick': {
-	if (!m.isGroup) return m.reply(mess.group)
-  if (!isBotAdmins) return m.reply(mess.botAdmin)
-  if (!isAdmins && !isCreator) return m.reply(mess.admin)
-		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
-	}
-	break
 	 case 'listpv': {
    let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
    let teks = `⬣ *LISTA DE BATE-PAPO PESSOAL*\n\nTotal Chat : ${anu.length} Chat\n\n`
@@ -410,6 +394,22 @@ break
                  kurumi.sendTextWithMentions(m.chat, teks, m)
              }
              break
+             case 'kick': {
+if (!m.isGroup) return m.reply(mess.group)
+if (!isBotAdmins) return m.reply(mess.botAdmin)
+if (!isAdmins && !isCreator) return m.reply(mess.admin)
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(`Usuario removido com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
+}
+break
+case 'add': {
+if (!m.isGroup) return m.reply(mess.group)
+if (!isBotAdmins) return m.reply(mess.botAdmin)
+if (!isAdmins && !isCreator) return m.reply(mess.admin)
+let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(`Usuario adicionado com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
+}
+break
              case 'demote': {
 if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
