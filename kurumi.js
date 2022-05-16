@@ -215,7 +215,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 				if (!q) throw '_Opções_ :\n1 - mute\n2 - unmute'
 				if (args[0] === 'mute') {
 					kurumi.chatModify({
-						mute: 'Infinity'
+						mute: true
 					}, m.chat, []).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 				} else if (args[0] === 'unmute') {
 					kurumi.chatModify({
