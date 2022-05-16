@@ -397,7 +397,7 @@ if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(`_Usuario Promovido Com sucesso por ondes do admin *${pushname}_*`)).catch((err) => m.reply(jsonformat(err)))
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(`Usuario Promovido Com sucesso por ondes do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
 		case 'listgp': {
@@ -415,7 +415,7 @@ if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(`_Usuario foi rebaixado a membro comun por ordens do admin *${pushname}_*`)).catch((err) => m.reply(jsonformat(err)))
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(`Usuario foi rebaixado a membro comun por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
     case 'emoji2': {
