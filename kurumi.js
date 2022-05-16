@@ -165,6 +165,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		if (!kurumi.public) {
 			if (!m.key.fromMe) return
 		}
+		
 
         
 		///////////////////////////////////////////////////////////
@@ -178,24 +179,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		} else {
 			console.log(chalk.black(chalk.bgWhiteBright('[ MSG ]')), chalk.black(chalk.white.bold(budy || m.mtype)) + '\n' + chalk.magenta('=> De'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.magenta('=> Em'), chalk.green(m.isGroup ? groupName : groupName))
 		}
-		//FAKEREPLY TROLI
-const ftroli = {
-key : {
-participant : '0@s.whatsapp.net'
-},
-message: {
-orderMessage: {
-itemCount : 1,
-status: 1,
-surface : 1,
-message: 'MyMans', //Kasih namalu
-orderTitle: 'Bang',
-thumbnail: log0, //Gambarnye
-sellerJid: '0@s.whatsapp.net'
 
-}
-}
-}
 		
 		
 
@@ -1462,7 +1446,7 @@ Changes 📃
 			}
 			break
 			
-			case 'tiktok': {
+		/*case 'tiktok': {
 if (!isUrl(args[0])) return m.reply(`Exemplo :\n${prefix + command} Link do tiktok`)
 let res = await aiovideodl(args[0])
 if (isUrl(args[0])) {
@@ -1497,13 +1481,12 @@ kurumi.sendMessage(m.chat, buttonMessage, {quoted:m})
 m.reply("Erro de link!")
 }
 }
-break
+break*/
 case 'ttad': {
 let res = await aiovideodl(args[0])
 kurumi.sendMessage(from, {audio:{url:res.medias[2].url}, mimetype:"audio/mp4", ptt:true, contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
-thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
@@ -1511,7 +1494,6 @@ sourceUrl: args[0]
 }
 break
 case 'ttvd': {
-if (isBan) return m.reply(mess.ban)
 let res = await aiovideodl(args[0])
 texttk = `*baixador de tiktok*
 
@@ -1532,13 +1514,12 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
-thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
 }}
 }
-kurumi.sendMessage(from, buttonMessage, {quoted:m})
+kurumi.sendMessage(m.chat, buttonMessage, {quoted:m})
 }
 break
 
