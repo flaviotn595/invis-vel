@@ -1468,7 +1468,6 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
-thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
@@ -1485,7 +1484,6 @@ let res = await aiovideodl(args[0])
 kurumi.sendMessage(from, {audio:{url:res.medias[2].url}, mimetype:"audio/mp4", ptt:true, contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
-thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
@@ -1514,7 +1512,6 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
-thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
