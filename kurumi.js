@@ -31,6 +31,7 @@ const os = require('os')
 const speed = require('performance-now')
 const moment = require("moment-timezone")
 const yts = require('yt-search')
+const { EmojiAPI } = require("emoji-api")
 
 // const afk = require("./lib/afk");
 
@@ -56,6 +57,8 @@ const {
 	webp2mp4File,
 	TelegraPh
 } = require('./lib/uploader')
+
+const emoji = new EmojiAPI()
 
 const {
 	smsg,
