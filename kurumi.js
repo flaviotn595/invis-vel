@@ -412,9 +412,9 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
              }
              break
 		case 'demote': {
-			if (!m.isGroup) return (mess.group)
-			if (!isGroupAdmins) return (mess.admin)
-			if (!isBotAdmins) return (mess.botAdmin)
+			if (!m.isGroup) return m.reply(mess.group)
+			if (!isGroupAdmins) return m.reply(mess.admin)
+			if (!isBotAdmins) return m.reply(mess.botAdmin)
 			if (!isAdmins && !isCreator) return m.reply(mess.admin)
 			let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
 			await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply('_Usuario foi rebaixado a membro comum_')).catch((err) => m.reply(jsonformat(err)))
