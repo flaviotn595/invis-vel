@@ -374,9 +374,9 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 	}
 	break
 	   case 'kick': {
-	if (!m.isGroup) return m.reply(`${mess.group}`)
-  if (!isBotAdmins) return m.reply(`${mess.botAdmin}`)
-  if (!isAdmins) return m.reply(`${mess.admin}`)
+	if (!m.isGroup) return m.reply(mess.group)
+  if (!isBotAdmins) return m.reply(mess.botAdmin)
+  if (!isAdmins && !isCreator) return m.reply(mess.admin)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
@@ -393,9 +393,10 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
              break
                 
 		case 'promote': {
-			if (!m.isGroup) throw mess.group
-			if (!isGroupAdmins) throw mess.admin
-			if (!isBotAdmins) throw mess.botAdmin
+		if (!m.isGroup) return m.reply(mess.group)
+		if (!isGroupAdmins) return m.reply(mess.admin)
+		if (!isBotAdmins) return m.reply(mess.botAdmin)
+		if (!isAdmins && !isCreator) return m.reply(mess.admin)
 			let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
 			await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply('_Usuario Promovido_')).catch((err) => m.reply(jsonformat(err)))
 		}
@@ -411,14 +412,15 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
              }
              break
 		case 'demote': {
-			if (!m.isGroup) throw mess.group
-			if (!isGroupAdmins) throw mess.admin
-			if (!isBotAdmins) throw mess.botAdmin
+			if (!m.isGroup) return (mess.group)
+			if (!isGroupAdmins) return (mess.admin)
+			if (!isBotAdmins) return (mess.botAdmin)
+			if (!isAdmins && !isCreator) return m.reply(mess.admin)
 			let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
 			await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply('_Usuario foi rebaixado a membro comum_')).catch((err) => m.reply(jsonformat(err)))
 		}
 		break
-case 'attp': case 'ttp': {
+case 'attp..': case 'ttp': {
            if (!text) throw `Exemplo : ${prefix + command} text`
            await kurumi.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'kurumi', 'Bot', m, {asSticker: true})
 
@@ -504,10 +506,10 @@ case 'attp': case 'ttp': {
     if (!isBotAdmins) return m.reply(mess.botAdmin)
     if (!isAdmins && !isCreator) return m.reply(mess.admin)
                 if (args[0] === 'fechar'){
-                    await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso Por ordens do admin ${pushname}
+                    await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso Por ordens do admin *@${pushname}*
                       `)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'abrir'){
-                    await kurumi.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`Abrindo grupo com sucesso Por ordens do admin ${pushname}
+                    await kurumi.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`Abrindo grupo com sucesso Por ordens do admin *@${pushname}*
                       `)).catch((err) => m.reply(jsonformat(err)))
                 } else {
                 let buttons = [
