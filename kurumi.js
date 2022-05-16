@@ -410,6 +410,37 @@ let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsap
 await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(`Usuario adicionado com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
+case 'tm': case 'bcgroup': {
+if (!isCreator) return m.reply(mess.owner)
+if (!args.join(" ")) return m.reply(`Cade o Testo Meu senhor?\n\nExemplo : ${prefix + command} ATUALIZACAO`)
+let getGroups = await kurumi.groupFetchAllParticipating()
+let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+let anu = groups.map(v => v.id)
+m.reply(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de término ${anu.length * 1.5} segundo`)
+for (let i of anu) {
+await sleep(1500)
+let btn = [{
+urlButton: {
+displayText: 'Youtube',
+url: 'https://youtube.com/channel/UCzBxPxlC38-33Hw1m05_o8Q'
+}
+}, {
+urlButton: {
+displayText: 'Grupo Whatsapp',
+url: 'https://chat.whatsapp.com/I17iS2ZXU3B28DG9iPS7g4'
+}
+}, {
+quickReplyButton: {
+displayText: 'Ping 🏓',
+id: '/ping'
+}
+}]
+let txt = `*「 Transmissão 」*\n\n${text}`
+kurumi.sendButtonText(i, txt, "© GhostJs ~ FlavioJs", btn)
+}
+m.reply(`Enviando com sucesso a transmissão para ${anu.length} Grupo`)
+}
+break
              case 'demote': {
 if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
