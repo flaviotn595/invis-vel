@@ -758,7 +758,7 @@ break
 *├✎* ${prefix}chat 
 *├✎* ${prefix}join [link]
 *├✎* ${prefix}leave
-*├✎* ${prefix}mutagp [mute ou unmute]
+*├✎* ${prefix}mutagp [1 uo 2]
 *├✎* ${prefix}update
 *├✎* ${prefix}setexif
 *├✎* ${prefix}block @user
