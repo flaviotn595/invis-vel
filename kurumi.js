@@ -393,7 +393,6 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
              break
              
              case 'promote': {
-if (isBan) return m.reply(mess.ban)
 if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
