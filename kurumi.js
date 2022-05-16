@@ -178,6 +178,24 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
 		} else {
 			console.log(chalk.black(chalk.bgWhiteBright('[ MSG ]')), chalk.black(chalk.white.bold(budy || m.mtype)) + '\n' + chalk.magenta('=> De'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.magenta('=> Em'), chalk.green(m.isGroup ? groupName : groupName))
 		}
+		//FAKEREPLY TROLI
+const ftroli = {
+key : {
+participant : '0@s.whatsapp.net'
+},
+message: {
+orderMessage: {
+itemCount : 1,
+status: 1,
+surface : 1,
+message: 'MyMans', //Kasih namalu
+orderTitle: 'Bang',
+thumbnail: log0, //Gambarnye
+sellerJid: '0@s.whatsapp.net'
+
+}
+}
+}
 		
 		
 
@@ -1468,12 +1486,13 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
+thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
 }}
 }
-kurumi.sendMessage(from, buttonMessage, {quoted:m})
+kurumi.sendMessage(m.chat, buttonMessage, {quoted:m})
 } else {
 m.reply("Erro de link!")
 }
@@ -1484,6 +1503,7 @@ let res = await aiovideodl(args[0])
 kurumi.sendMessage(from, {audio:{url:res.medias[2].url}, mimetype:"audio/mp4", ptt:true, contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
+thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
@@ -1512,6 +1532,7 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"Oficial baixador de tiktok",
 body:res.title,
+thumbnail: log0,
 mediaType:1,
 mediaUrl: args[0],
 sourceUrl: args[0]
