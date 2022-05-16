@@ -391,16 +391,16 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
                  kurumi.sendTextWithMentions(m.chat, teks, m)
              }
              break
-                
-		case 'promote': {
-		if (!m.isGroup) return m.reply(mess.group)
-		if (!isGroupAdmins) return m.reply(mess.admin)
-		if (!isBotAdmins) return m.reply(mess.botAdmin)
-		if (!isAdmins && !isCreator) return m.reply(mess.admin)
-			let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-			await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply('_Usuario Promovido_')).catch((err) => m.reply(jsonformat(err)))
-		}
-		break
+             
+             case 'promote': {
+if (isBan) return m.reply(mess.ban)
+if (!m.isGroup) return m.reply(mess.group)
+if (!isBotAdmins) return m.reply(mess.botAdmin)
+if (!isAdmins && !isCreator) return m.reply(mess.admin)
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(`_Usuario Promovido Com sucesso por ondes do admin *${pushname}_*`)).catch((err) => m.reply(jsonformat(err)))
+}
+break
 		case 'listgp': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
                  let teks = `⬣ *LISTA GRUPO DE BATE-PAPO*\n\nTotal de Grupo : ${anu.length} Grupo\n\n`
@@ -416,25 +416,9 @@ if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply('_Usuario foi rebaixado a membro comum_')).catch((err) => m.reply(jsonformat(err)))
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(`_Usuario foi rebaixado a membro comun por ordens do admin *${pushname}_*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
-	/*	case 'demote': {
-		
-	 if (!m.isGroup) return m.reply(mess.group)
-	 if (!isGroupAdmins) return m.reply(mess.admin)
- 	if (!isBotAdmins) return m.reply(mess.botAdmin)
-	if (!isAdmins && !isCreator) return m.reply(mess.admin)
-			let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-			await kurumi.groupParticipantsUpdate(m.chat, [usersdemote').then((res) => m.reply('_Usuario foi rebaixado a membro comum_')).catch((err) => m.reply(jsonformat(err)))
-		}
-		break*/
-case 'attp..': case 'ttp': {
-           if (!text) throw `Exemplo : ${prefix + command} text`
-           await kurumi.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'kurumi', 'Bot', m, {asSticker: true})
-
-         }
-         break
     case 'emoji2': {
 	    if (!text) throw `Exemplo : ${prefix + command} 🥹`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(text)}`)
