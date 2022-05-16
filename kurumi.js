@@ -451,7 +451,7 @@ case 'emoji3': {
 if (!args.join(" ")) return m.reply('o emoji?')
 emoji.get(args.join(" ")).then(async(emoji) => {
 let mese = await kurumi.sendMessage(m.chat, {image:{url:emoji.images[4].url}, caption:"Feito!"}, {quoted:m})
-await kurumi.sendMessage(from, {text:"Nao da flood pfv"}, {quoted:mese})
+await kurumi.sendMessage(m.chat, {text:"Nao da flood pfv"}, {quoted:mese})
 })
 }
 break
@@ -763,6 +763,7 @@ break
 *├✎* ${prefix}wllpaper 🖼️
 *├✎* ${prefix}emoji 🤗 
 *├✎* ${prefix}emoji2 🤗
+*├✎* ${prefix}emoji3 🤗
 │
 ╰───────⚜
 
@@ -1445,7 +1446,7 @@ Changes 📃
 				kurumi.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4'}, { quoted: m })
 			}
 			break
-		case 'tiktok': {
+		case 'tiktok..': {
 			//m.reply('_Função desativada temporáriamente._')
 			if (!text) throw 'Eu preciso que você insira um link!'
 			if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) throw 'Link Invalido!'
