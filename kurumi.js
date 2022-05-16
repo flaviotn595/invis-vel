@@ -410,9 +410,9 @@ let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsap
 await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(`Usuario adicionado com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
-case 'traduzir': case 'terjemahan': {
+case 'traduzir': {
 if (!args.join(" ")) return m.reply("O texto?")
-tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=pt&dizer=${args.join(" ")}`)
+tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=pt&kata=${args.join(" ")}`)
 Infoo = tes.info
 Detek = tes.translate
 m.reply(`🌐Traduzir : ${Detek}\n📘Resultados : ${Infoo}`)
