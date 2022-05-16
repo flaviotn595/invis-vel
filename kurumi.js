@@ -502,11 +502,11 @@ case 'attp': case 'ttp': {
   case 'grupo': case 'grup': {
     if (!m.isGroup) return m.reply(mess.group)
     if (!isBotAdmins) return m.reply(mess.botAdmin)
-    if (!isAdmins) return m.reply(mess.admin)
+    if (!isAdmins && !isCreator) return m.reply(mess.admin)
                 if (args[0] === 'fechar'){
-                    await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso`)).catch((err) => m.reply(jsonformat(err)))
+                    await kurumi.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Fechando Grupo com sucesso Por ordens do admin ${pushname}`)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'abrir'){
-                    await kurumi.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`Abrindo grupo com sucesso`)).catch((err) => m.reply(jsonformat(err)))
+                    await kurumi.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(`Abrindo grupo com sucesso Por ordens do admin ${pushname}`)).catch((err) => m.reply(jsonformat(err)))
                 } else {
                 let buttons = [
                         { buttonId: `/grupo abrir`, buttonText: { displayText: 'Abrir Grupo' }, type: 1 },
