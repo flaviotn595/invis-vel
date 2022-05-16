@@ -420,7 +420,7 @@ m.reply(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de tér
 for (let i of anu) {
 await sleep(1500)
 let txt = `*「 Transmissão 」*\n\n${text}`
-kurumi.sendMessage(i, txt, "© GhostJs ~ FlavioJs")
+kurumi.sendMessage(m.chat, txt, "© GhostJs ~ FlavioJs")
 }
 m.reply(`Enviando com sucesso a transmissão para ${anu.length} Grupo`)
 }
