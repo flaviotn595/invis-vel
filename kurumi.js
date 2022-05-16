@@ -441,6 +441,14 @@ let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender :
 await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(`Usuario foi rebaixado a membro comun por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
 }
 break
+case 'teste': {
+if (!args.join(" ")) return m.reply('o emoji?')
+emoji.get(args.join(" ")).then(async(emoji) => {
+let mese = await kurumi.sendMessage(m.chat, {image:{url:emoji.images[4].url}, caption:"Feito!"}, {quoted:m})
+await kurumi.sendMessage(from, {text:"s"}, {quoted:mese})
+})
+}
+break
     case 'emoji2': {
 	    if (!text) throw `Exemplo : ${prefix + command} 🥹`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(text)}`)
