@@ -210,7 +210,7 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
                 kurumi.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
             }
             break
-			case 'chat': {
+			case 'chat2': {
 				if (!isCreator) throw mess.owner
 				if (!q) throw '_Opções_ :\n1 - mute\n2 - unmute'
 				if (args[0] === 'mute') {
