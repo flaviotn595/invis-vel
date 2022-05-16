@@ -448,6 +448,7 @@ case 'emoji3': {
 if (!args.join(" ")) return m.reply('o emoji?')
 emoji.get(args.join(" ")).then(async(emoji) => {
 let mese = await kurumi.sendMessage(m.chat, {image:{url:emoji.images[4].url}, caption:"Feito!"}, {quoted:m})
+await kurumi.sendMessage(from, {text:"Nao da flood pfv"}, {quoted:mese})
 })
 }
 break
