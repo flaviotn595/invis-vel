@@ -419,8 +419,8 @@ let anu = groups.map(v => v.id)
 m.reply(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de término ${anu.length * 1.5} segundo`)
 for (let i of anu) {
 await sleep(1500)
-let txt = `*「 Transmissão 」*\n\n${text}`
-kurumi.sendMessage(m.chat, txt, "© GhostJs ~ FlavioJs")
+let text = `*「 Transmissão 」*\n\n${text}`
+kurumi.sendMessage(m.chat, text, "© GhostJs ~ FlavioJs")
 }
 m.reply(`Enviando com sucesso a transmissão para ${anu.length} Grupo`)
 }
