@@ -1329,6 +1329,11 @@ quickReplyButton: {
 displayText: 'contato do Dono',
 id: '/dono'
 }  
+},{
+quickReplyButton: {
+displayText: 'null',
+id: 'null'
+}
 }]
 let txt = `*「 Transmissão 」*\n\n${text}`
 kurumi.send5ButImg(m.chat, txt, "© GhistJs", btn)
