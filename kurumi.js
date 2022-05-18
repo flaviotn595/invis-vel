@@ -1306,7 +1306,7 @@ if (!args.join(" ")) return m.reply(`Texto mano ?\n\nExample : ${prefix + comman
 let getGroups = await kurumi.groupFetchAllParticipating()
 let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
 let anu = groups.map(v => v.id)
-m.chat(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de término ${anu.length * 1.5} segundo`)
+m.reply(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de término ${anu.length * 1.5} segundo`)
 for (let i of anu) {
 await sleep(1500)
 let btn = [{
