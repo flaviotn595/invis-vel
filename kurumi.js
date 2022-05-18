@@ -1311,8 +1311,8 @@ for (let i of anu) {
 await sleep(1500)
 let btn = [{
 urlButton: {
-displayText: 'Grupo whatsapp',
-url: 'https://chat.whatsapp.com/I17iS2ZXU3B28DG9iPS7g4'
+displayText: 'Numero do dono',
+url: 'wa.me/558181718175'
 }
 }, {
 urlButton: {
