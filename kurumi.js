@@ -198,6 +198,11 @@ module.exports = kurumi = async (kurumi, m, chatUpdate, store) => {
           m.reply(`Exif foi alterado com sucesso para\n\n🐶 Packname : ${global.packname}\n🐶 Author : ${global.author}`)
             }
             break
+            case 'attp': {
+const buff = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
+kurumi.sendMessage(m.chat, { sticker : buff}) 
+}
+break
             case 'reacao': {
                 if (!isCreator) throw mess.owner
                 reactionMessage = {
