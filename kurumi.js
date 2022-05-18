@@ -762,6 +762,7 @@ break
 *├✎* ${prefix}tomp3 📁
 *├✎* ${prefix}sticker 📄
 *├✎* ${prefix}toimg 🖼️
+*├✎* ${prefix}attp 💥
 *├✎* ${prefix}toigif 📹
 *├✎* ${prefix}traduzir 🌐
 *├✎* ${prefix}pinterest 🖼️
@@ -1299,6 +1300,43 @@ Changes 📃
 			})
 		}
 		break
+		case 'tmgp': {
+if (!isCreator) return m.reply(mess.owner)
+if (!args.join(" ")) return m.reply(`Texto mano ?\n\nExample : ${prefix + command} Bot On`)
+let getGroups = await kurumi.groupFetchAllParticipating()
+let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+let anu = groups.map(v => v.id)
+ads(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de término ${anu.length * 1.5} segundo`)
+for (let i of anu) {
+await sleep(1500)
+let btn = [{
+urlButton: {
+displayText: 'Grupo whatsapp',
+url: 'https://chat.whatsapp.com/I17iS2ZXU3B28DG9iPS7g4'
+}
+}, {
+urlButton: {
+displayText: 'Youtube',
+url: ' '
+}
+}, {
+quickReplyButton: {
+displayText: 'Status do Bot',
+id: '/ping'
+}
+}, {
+quickReplyButton: {
+displayText: 'contato do Dono',
+id: '/dono'
+}  
+}]
+let txt = `*「 Transmissão 」*\n\n${text}`
+kurumi.send5ButImg(m.chat, txt, "© GhistJs", btn)
+}
+m.chat(`Enviando com sucesso a transmissão para ${anu.length} Grupo`)
+}
+addCmd(command.slice(1), 1, commund)
+break
 		case 'casal': {
             if (!m.isGroup) throw mess.group
             let member = participants.map(u => u.id)
