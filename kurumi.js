@@ -1300,47 +1300,15 @@ Changes 📃
 			})
 		}
 		break
-		case 'tmgp': {
-if (!isCreator) return m.reply(mess.owner)
-if (!args.join(" ")) return m.reply(`Texto mano ?\n\nExample : ${prefix + command} Bot On`)
-let getGroups = await kurumi.groupFetchAllParticipating()
-let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
-let anu = groups.map(v => v.id)
-m.reply(`Enviar transmissão para ${anu.length} Bate-papo em grupo, hora de término ${anu.length * 1.5} segundo`)
-for (let i of anu) {
-await sleep(1500)
-let btn = [{
-urlButton: {
-displayText: 'Numero do dono',
-url: 'wa.me/558181718175'
+		case 'insta': {
+if (args[0] === "mp4") {
+kurumi.sendMessage(from, {video:{url:args[1]}, caption:'Feito!', mimetype:'video/mp4'}, {quoted:m})
+} else if (args[0] === "jpg") {
+kurumi.sendMessage(from, {image:{url:args[1]}, caption:'Feito!'}, {quoted:m})
+} else {
+m.reply(" Error! ")
 }
-}, {
-urlButton: {
-displayText: 'Youtube',
-url: ' '
 }
-}, {
-quickReplyButton: {
-displayText: 'Status do Bot',
-id: '/ping'
-}
-}, {
-quickReplyButton: {
-displayText: 'contato do Dono',
-id: '/dono'
-}  
-},{
-quickReplyButton: {
-displayText: 'null',
-id: 'null'
-}
-}]
-let txt = `*「 Transmissão 」*\n\n${text}`
-kurumi.send5ButImg(m.chat, txt, "© GhistJs", btn)
-}
-m.chat(`Enviando com sucesso a transmissão para ${anu.length} Grupo`)
-}
-addCmd(command.slice(1), 1, commund)
 break
 		case 'casal': {
             if (!m.isGroup) throw mess.group
