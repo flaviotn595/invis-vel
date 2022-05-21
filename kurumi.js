@@ -1472,7 +1472,7 @@ break
 			let vid = res.data.result.video.nowm
 			kurumi.sendMessage(m.chat, {
 				video: {
-					link: vid
+					url: vid
 				},
 				caption: capt,
 				mimetype: 'video/mp4',
