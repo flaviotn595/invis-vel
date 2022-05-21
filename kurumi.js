@@ -1462,17 +1462,17 @@ break
 				kurumi.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4'}, { quoted: m })
 			}
 			break
-		case 'tiktok..': {
+		case 'tiktok': {
 			//m.reply('_Função desativada temporáriamente._')
 			if (!text) throw 'Eu preciso que você insira um link!'
 			if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) throw 'Link Invalido!'
 			m.reply(mess.wait)
 			capt = '_Send by kurumiBot_'
-			res = await axios.get(`http://hadi-api.herokuapp.com/api/tiktok?url=${text}`)
+			res = await axios.get(`https://akame-api.herokuapp.com/api/tkdl?link=${text}&apikey=QNYCKMrW`)
 			let vid = res.data.result.video.nowm
 			kurumi.sendMessage(m.chat, {
 				video: {
-					url: vid
+					link: vid
 				},
 				caption: capt,
 				mimetype: 'video/mp4',
