@@ -68,7 +68,7 @@ async function startkurumi() {
             let participants = anu.participants
             for (let num of participants) {
                 if (anu.action == 'add') {
-                    kurumi.sendMessage(anu.id, { video: { url: welkomgif }, contextInfo: { mentionedJid: [num] }, caption: `Opa @${num.split("@")[0]}, bem vindo ao grupo Suporte K-N ${metadata.subject}.\n\nSe Você estiver dúvida pôde chamar alguns dos adms ou macarca eles Sejam muito bem Vindo...🚀`, gifPlayback: true })
+                    kurumi.sendMessage(anu.id, { video: { url: welkomgif }, contextInfo: { mentionedJid: [num] }, caption: `Opa @${num.split("@")[0]}, bem vindo ao grupo *${metadata.subject}*.\n\nSe Você estiver dúvida pôde chamar alguns dos adms ou macarca eles Sejam muito bem Vindo...🚀`, gifPlayback: true })
               }}
             } catch (err) {
             console.log(err)
