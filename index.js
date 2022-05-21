@@ -64,11 +64,11 @@ async function startkurumi() {
         let metadata = await kurumi.groupMetadata(anu.id)
         console.log(anu)
         try {
-            let welkomgif = 'https://telegra.ph/file/f41a458206dcdec65d065.gif'
+            let welkomgif = 'https://telegra.ph/file/c0edfbcfad3c7cf751a2f.gif'
             let participants = anu.participants
             for (let num of participants) {
                 if (anu.action == 'add') {
-                    kurumi.sendMessage(anu.id, { video: { url: welkomgif }, contextInfo: { mentionedJid: [num] }, caption: `Opa @${num.split("@")[0]}, bem vindo ao grupo ${metadata.subject}.\n\nEspero que tenha uma boa estadia.`, gifPlayback: true })
+                    kurumi.sendMessage(anu.id, { video: { url: welkomgif }, contextInfo: { mentionedJid: [num] }, caption: `Opa @${num.split("@")[0]}, bem vindo ao grupo Suporte K-N ${metadata.subject}.\n\nSe Você estiver dúvida pôde chamar alguns dos adms ou macarca eles Sejam muito bem Vindo...🚀`, gifPlayback: true })
               }}
             } catch (err) {
             console.log(err)
