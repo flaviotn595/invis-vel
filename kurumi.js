@@ -624,7 +624,7 @@ break
         let ran = await getRandom('.png')
                exec(`ffmpeg -i ${media} ${ran}`, (err) => {
               fs.unlinkSync(media)
-                    if (err) m.reply('Marque uma figurinha')
+                    if (err) reply(`Marque uma figurinha`)
                     let buffer = fs.readFileSync(ran)
                     kurumi.sendMessage(m.chat, { image: buffer }, { quoted: m })
                     fs.unlinkSync(ran)
