@@ -25,8 +25,8 @@ headers = {
 }
 
 perdi = {
-    'Language': 'id-ID',
-    'Voice': 'id-ID-Standard-C',
+    'Language': 'en-EN',
+    'Voice': 'en-EN-Standard-C',
     'TextMessage': PerdiHalu,
     'type': '0',
 }
