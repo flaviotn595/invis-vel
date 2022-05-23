@@ -256,7 +256,7 @@ break
 			if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalido!'
 			m.reply(mess.wait)
 			let result = args[0].split('https://chat.whatsapp.com/')[1]
-			await kurumi.groupAcceptInvite(result).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+			await kurumi.groupAcceptInvite(result).then((res) => m.reply(`Grupo adicionado com sucesso *${pushname}*`)).catch((err) => m.reply(`o grupo e inviável porra ?`))
 		}
 		break
 		
