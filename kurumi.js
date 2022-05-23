@@ -1429,7 +1429,7 @@ break
                 m.reply(e)
                 }
                 break
-   case 'ig':
+ /*  case 'ig':
   if (!q) return m.reply('Cade o link porra')
   if (!isUrl(q)) return m.reply('cade o link porra ?')
   if (!q.includes('instagram')) return m.reply(notLink())
@@ -1452,7 +1452,15 @@ break
   .catch((err) => {
   m.reply(`erro na script do bot`)
   })
-  break
+  break*/
+  case 'tts':{
+                 if (!text) throw `Exemplo: *${prefix + command} opa*`
+                 m.reply(mess.wait)
+                 exec("python3 texttosound.py "+text)
+                 audio = "p.mp3"
+                 kurumi.sendMessage(m.chat, {audio: {url: audio}}, {quoted: m})
+            }
+            break
 
 			case 'play': case 'yt': {
 				if (!text) throw '_Eu preciso que você digite algo para pesquisar!_'
