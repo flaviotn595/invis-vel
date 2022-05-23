@@ -1450,7 +1450,7 @@ break
   }
   })
   .catch((err) => {
-  m.reply(fiturError())
+  m.reply(`erro na script do bot`)
   })
   break
 
