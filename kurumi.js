@@ -407,7 +407,7 @@ if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(`Usuario Promovido Com sucesso por ondes do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(`Usuario Promovido Com sucesso por ondes do admin *${pushname}*`)).catch((err) => m.reply('Marque alguem ${pushname} Para ele ser um de nós'))
 }
 break
 		case 'listgp': {
@@ -425,7 +425,7 @@ if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(`Usuario removido com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply('Nao foi possível marquei alguém'))
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(`Usuario removido com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply('Nao foi possível marquei alguém ${pushname} Para mim removelo'))
 }
 break
 case 'add': {
@@ -433,7 +433,7 @@ if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
 let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(`Usuario adicionado com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(`Usuario adicionado com sucesso por ordens do admin *${pushname}*`)).catch((err) => m.reply('Marque alguém ${pushname} Para mim adicionalo'))
 }
 break
 case 'traduzir': {
@@ -449,7 +449,7 @@ if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(`Usuario foi rebaixado a membro comun por ordens do admin *${pushname}*`)).catch((err) => m.reply(jsonformat(err)))
+await kurumi.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(`Usuario foi rebaixado a membro comun por ordens do admin *${pushname}*`)).catch((err) => m.reply('Marque alguem ${pushname} para mim colocar esse inútil em seu devido lugar'))
 }
 break
 case 'emoji3': {
@@ -624,7 +624,7 @@ break
         let ran = await getRandom('.png')
                exec(`ffmpeg -i ${media} ${ran}`, (err) => {
               fs.unlinkSync(media)
-                    if (err) reply(err)
+                    if (err) m.reply('Marque uma figurinha')
                     let buffer = fs.readFileSync(ran)
                     kurumi.sendMessage(m.chat, { image: buffer }, { quoted: m })
                     fs.unlinkSync(ran)
@@ -634,7 +634,7 @@ break
 		case 'toigif':
 		case 'tovideo': {
 			if (!m.isGroup) throw mess.group
-			if (!quoted) throw 'Reply Image'
+			if (!quoted) throw 'Cade a foto?'
 			if (!/webp/.test(mime)) throw `Responda a um sticker animado *${prefix + command}*`
 			m.reply(mess.wait)
 			let media = await kurumi.downloadAndSaveMediaMessage(quoted)
