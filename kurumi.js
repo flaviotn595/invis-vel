@@ -384,7 +384,6 @@ break
 
 		case 'tagall':
 			if (!m.isGroup) return m.reply(mess.group)
-			if (!isGroupAdmins) return m.reply(mess.admin)
 			if (!isAdmins && !isCreator) return m.reply(mess.admin)
 			if (!text) throw mess.text
 			kurumi.sendMessage(m.chat, {
