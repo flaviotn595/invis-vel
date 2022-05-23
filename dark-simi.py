@@ -34,7 +34,6 @@ params = {
 
 dark = requests.get('https://simsimi.info/api/', headers=headers, params=params, cookies=cookies)
 if dark.status_code == 200:
-     print('_simi bot_: ', dark.json().get('success'))
-     print('ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ ᴍʀ_ᴅᴀʀᴋ')
+     print('*_simi bot_:* ', dark.json().get('success'))
 else:
      print('bad respon ')
