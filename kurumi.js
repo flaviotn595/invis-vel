@@ -592,13 +592,21 @@ break
 		}
 	    }
 	    break
-	    case 'simi':{
+	    case 'tr':{
+                    if (!m.quoted) throw `Exemplo: *${prefix + command} in ola*`
+                    exec("python3 tra.py "+text+" "+m.message.extendedTextMessage.contextInfo.quotedMessage.conversation, (err, stdout) => {
+                        if(err) return m.reply(err)
+                        if (stdout) return m.reply(stdout)
+                    })
+             }
+	    break
+	  /*  case 'simi':{
                  exec('python3 dark-simi.py '+text, (err, stdout) => {
                  if(err) return m.reply(err)
                  if (stdout) return m.reply(stdout)
                  })
              }
-	     break
+	     break*/
 		 case 'sticker': case 's': case 'stickergif': case 'sgif': {
             if (!quoted) throw `Balas Video/Image Dengan Caption ${prefix + command}`
             m.reply(mess.wait)
