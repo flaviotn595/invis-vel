@@ -1430,8 +1430,8 @@ break
                 }
                 break
    case 'ig':
-  if (!q) return m.reply(wrongFormat(prefix))
-  if (!isUrl(q)) return m.reply(wrongFormat(prefix))
+  if (!q) return m.reply('Cade o link porra')
+  if (!isUrl(q)) return m.reply('cade o link porra ?')
   if (!q.includes('instagram')) return m.reply(notLink())
   await m.reply(mess.wait)
   bochil.instagramdlv2(`${q}`).then(async data => {
