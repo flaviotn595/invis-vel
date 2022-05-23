@@ -1433,7 +1433,7 @@ break
   if (!q) return m.reply(wrongFormat(prefix))
   if (!isUrl(q)) return m.reply(wrongFormat(prefix))
   if (!q.includes('instagram')) return m.reply(notLink())
-  await reply(mess.wait)
+  await m.reply(mess.wait)
   bochil.instagramdlv2(`${q}`).then(async data => {
   let txt = `*🌱 Download Instagram 🌱*\n\n`
   txt += `*💬 Título :* ${data.title}\n`
