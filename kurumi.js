@@ -259,6 +259,11 @@ break
 			await kurumi.groupAcceptInvite(result).then((res) => m.reply(`Grupo adicionado com sucesso *${pushname}*`)).catch((err) => m.reply(`o grupo e inviável porra ?`))
 		}
 		break
+		case 'ping2': case 'tes':
+  let timestamp = speed()
+  let latensi = speed() - timestamp
+  m.reply(`Respondendo em ${latensi.toFixed(4)} Segundo`)
+  break
 		
 				case 'wallpaper': {
                 if (!text) throw 'Insira um título de consulta'
