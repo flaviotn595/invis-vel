@@ -11,6 +11,4 @@ response = requests.get('https://t24.freetranslations.org/freetranslationsorg.ph
 #a = response.split('"text":"')[1];
 #b = a.split('"')[0];
 print (f"""{response}
-
-_© GhostJs Multi Device 2022_
-""")
+_© GhostJs Multi Device 2022_""")
