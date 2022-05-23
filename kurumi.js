@@ -600,13 +600,6 @@ break
                     })
              }
 	    break
-	  /*  case 'simi':{
-                 exec('python3 dark-simi.py '+text, (err, stdout) => {
-                 if(err) return m.reply(err)
-                 if (stdout) return m.reply(stdout)
-                 })
-             }
-	     break*/
 		 case 'sticker': case 's': case 'stickergif': case 'sgif': {
             if (!quoted) throw `Balas Video/Image Dengan Caption ${prefix + command}`
             m.reply(mess.wait)
@@ -1468,14 +1461,6 @@ break
   m.reply(`erro na script do bot`)
   })
   break*/
-  case 'tts':{
-                 if (!text) throw `Exemplo: *${prefix + command} opa*`
-                 m.reply(mess.wait)
-                 exec("python3 texttosound.py "+text)
-                 audio = "p.mp3"
-                 kurumi.sendMessage(m.chat, {audio: {url: audio}}, {quoted: m})
-            }
-            break
 
 			case 'play': case 'yt': {
 				if (!text) throw '_Eu preciso que você digite algo para pesquisar!_'
