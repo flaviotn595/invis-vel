@@ -10,6 +10,7 @@ require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
+const bochil = require("@bochilteam/scraper")
 
 
 const fs = require('fs')
@@ -259,7 +260,7 @@ break
 			await kurumi.groupAcceptInvite(result).then((res) => m.reply(`Grupo adicionado com sucesso *${pushname}*`)).catch((err) => m.reply(`o grupo e inviável porra ?`))
 		}
 		break
-		case 'ping2': case 'tes':
+		case 'ping': case 'tes':
   let timestamp = speed()
   let latensi = speed() - timestamp
   m.reply(`Respondendo em ${latensi.toFixed(4)} Segundo`)
@@ -337,7 +338,7 @@ break
 			m.reply('Bot agora esta no modo privado')
 		}
 		break
-		case 'ping':
+		case 'statusbot':
 		case 'botstatus':
 		case 'statusbot': {
 			let timestamp = speed()
@@ -1428,6 +1429,30 @@ break
                 m.reply(e)
                 }
                 break
+   case 'ig':
+  if (!q) return m.reply(wrongFormat(prefix))
+  if (!isUrl(q)) return m.reply(wrongFormat(prefix))
+  if (!q.includes('instagram')) return m.reply(notLink())
+  await reply(mess.wait)
+  bochil.instagramdlv2(`${q}`).then(async data => {
+  let txt = `*🌱 Download Instagram 🌱*\n\n`
+  txt += `*💬 Título :* ${data.title}\n`
+  txt += `*📥 Tamanho :* ${data.medias.length}\n`
+  txt += `*〽️ Url :* ${data.url}\n\n`
+  txt += `*Aguarde o processo de entrega de mídia, ${pushname}*`
+  m.reply(txt)
+  for (let i of data.medias) {
+  if (i.extension === "mp4") {
+  kurumi.sendMessage(m.chat, { video: { url: i.url }})
+  } else if (i.extension === "jpg") {
+  kurumi.sendMessage(m.chat, { image: { url: i.url }})
+  }
+  }
+  })
+  .catch((err) => {
+  reply(fiturError())
+  })
+  break
 
 			case 'play': case 'yt': {
 				if (!text) throw '_Eu preciso que você digite algo para pesquisar!_'
