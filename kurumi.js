@@ -687,7 +687,7 @@ break
 				'N:;flavio.;;;' +
 				'FN: Flávio N.\n' +
 				'ORG:flavioJs (GhostDev);\n' +
-				'TEL;type=CELL;type=VOICE;waid=558181718175:+55 81 81718175\n' +
+				'TEL;type=CELL;type=VOICE;waid=5581936186122:+55 81 936186122\n' +
 				'END:VCARD'
 			kurumi.sendMessage(m.chat, {
 				contacts: {

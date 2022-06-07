@@ -10,7 +10,7 @@ const chalk = require('chalk')
 
 
 // Outros
-global.owner = ['558181718175']
+global.owner = ['5581936186122']
 global.prefix = ['/']
 global.packname = 'Kurumi Bot'
 global.author = 'https://github.com/GHOSTBOT69'
