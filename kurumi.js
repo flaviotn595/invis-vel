@@ -286,9 +286,9 @@ break
             break
             
             case 'leave': {
-                if (!isCreator) return reply(`${mess.owner}`)
-                await kurumi.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
-            }
+                if (!isCreator) return m.reply(`${mess.owner}`)
+                await kurumi.groupLeave(m.chat).then((res) => m.reply(`Estou saindo do grupo por ordem do meu dono *${pushname}*`)).catch((err) => m.reply(`nao consegui sair ${pushname} Desculpe`))
+                }
             break
             
             case 'pinterest': {
