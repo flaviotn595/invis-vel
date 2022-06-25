@@ -829,7 +829,7 @@ case 'sora': {
         hydratedButtons: [{
           urlButton: {
             displayText: 'SORA-NET V1.0.0',
-            url: 'https://raw.githubusercontent.com/flaviotn595/atualizacaokurumi/blob/main/sora-net.apk'
+            url: 'https://raw.githubusercontent.com/flaviotn595/atualizacaokurumi/main/sora-net.apk'
           }
 						}]
       }
