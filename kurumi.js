@@ -812,11 +812,11 @@ break
 		}
 break 
 case 'sora': {
-  const sora = 'https://telegra.ph/file/37f138b097d7192c37116.jpg'
+  const sor = 'https://telegra.ph/file/37f138b097d7192c37116.jpg'
   anu = `SORA-NET 1.0.0 VERSÃO OFICIAL`
   let message = await prepareWAMessageMedia({
     image: {
-      url: sora
+      url: sor
     }
   }, {
     upload: kurumi.waUploadToServer
