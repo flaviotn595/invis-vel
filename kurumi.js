@@ -810,7 +810,40 @@ break
 				quoted: m
 			})
 		}
+break 
+case 'sora': {
+  const sora = 'https://telegra.ph/file/37f138b097d7192c37116.jpg'
+  anu = `SORA-NET 1.0.0 VERSÃO OFICIAL`
+  let message = await prepareWAMessageMedia({
+    image: {
+      url: sora
+    }
+  }, {
+    upload: kurumi.waUploadToServer
+  })
+  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+    templateMessage: {
+      hydratedTemplate: {
+        imageMessage: message.imageMessage,
+        hydratedContentText: anu,
+        hydratedButtons: [{
+          urlButton: {
+            displayText: 'SORA-NET V1.0.0',
+            url: 'https://raw.githubusercontent.com/flaviotn595/atualizacaokurumi/blob/main/sora-net.apk'
+          }
+						}]
+      }
+    }
+  }), {
+    userJid: m.chat,
+    quoted: m
+  })
+  kurumi.relayMessage(m.chat, template.message, {
+    messageId: template.key.id
+  })
+}
 break
+
 		case 'sk2.1': {
 			const min = 'https://telegra.ph/file/df0aca18c37be0bbea032.jpg'
 			anu = `SK-Experience v2.1 | Stock
@@ -865,7 +898,6 @@ Changes 📃
 				messageId: template.key.id
 			})
 		}
-	break
 	break
 		case 'skui': {
 			const sk = 'https://i.ibb.co/ZJDyJhD/IMG-20220405-144850-595.jpg'
